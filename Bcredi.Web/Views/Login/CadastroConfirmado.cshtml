@@ -1,0 +1,35 @@
+﻿@{
+	ViewBag.Title = "Cadastro confirmado com sucesso";      
+	Layout = "~/Views/Shared/_Layout_LoginCadastro.cshtml";
+}
+
+<main>
+    <section id="cadastro">
+        <div class="container">
+            <div class="box-principal">
+                <center><h1><img src="../Content/img/acesso/logo.png" alt="Bcredi"></h1></center>
+                <p class="text-center cadastro-text mb-30">Cadastro confirmado <span class="destaque">com sucesso!</span></p>
+                <div class="conteudo-texto text-center">
+                    <p>Seu cadastro foi efetuado com sucesso. Você já pode começar a usar o site da Bcredi.</p>
+                </div>
+                <center>
+                    <div class="botao">
+                        <button type="submit" class="btn btn-principal btn-amarelo"  onclick="location.href='@Url.Action("Login", "Login")'">Entrar</button>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="aviso-envio" class="modal fade" role="dialog">
+    <div class="modal-dialog margin-auto">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h2>Email enviado <span class="destaque">com sucesso</span>!</h2>
+                <p>Verifique em seu email o link para ativar sua conta.</p>
+                <button type="button" class="btn btn-medio btn-cinza mt-30" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

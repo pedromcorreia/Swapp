@@ -1,0 +1,35 @@
+﻿@model Bcredi.DAO.Models.Usuario
+@{
+    ViewBag.Title = "Esqueceu sua senha?";
+    Layout = "~/Views/Shared/_Layout_LoginCadastro.cshtml";
+}
+
+<main>
+    <section id="login">
+
+        <div class="container">
+            @using (Html.BeginForm("EsqueciSenha", "Login", FormMethod.Post, new { @class = "fm-iniciar", role = "form" }))
+            {
+            <div class="box-principal">
+                <center><h1><img src="../Content/img/acesso/logo.png" alt="Bcredi"></h1></center>
+                <p class="text-center inicial mb-30">Digite o seu login e iremos enviar um link para você alterar a senha:</p>
+                <form>
+                    <fieldset>
+                        <div class="form-group">
+                            <label>Login:</label>
+                            <input type="email" class="form-control"
+                                   autocomplete="off" required="required" id="txtLogin" name="txtLogin" value="@ViewBag.txtLogin">
+                        </div>
+                        <center>
+                            <div class="botao">
+                                <button type="submit" class="btn btn-principal btn-amarelo">Enviar</button> <span class="">ou</span> <a href="/Login/Login">Voltar ao login</a>
+                            </div>
+                        </center>
+                    </fieldset>
+                </form>
+            </div>
+            }
+        </div>
+
+    </section>
+</main>

@@ -1,0 +1,112 @@
+﻿@model Bcredi.DAO.Models.Usuario
+@{
+    Layout = "~/Views/Shared/_Layout_Bcredi.cshtml";
+    ViewBag.Title = "Configurações";
+}
+
+<main>
+
+    <section id="conteudo">
+        <div class="container">
+            @using (Html.BeginForm("AlterarSenha", "Usuario", FormMethod.Post, new { @class = "fm-iniciar", role = "form" }))
+            {
+
+                <div class="box-principal conteudo-interno">
+                    <h1>Meu perfil</h1>
+                    <p>Confira seus dados.</p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="conteudo-box">
+                                <div class="box-lateral hidden">
+                                    <h3>Dados pessoais</h3>
+                                    <ul>
+                                        <li><a href="/DadosComplementares/DadosComplementares">Dados de cadastro</a></li>
+                                        <li><a href="/DadosComplementares/DadosComplementares">Dados bancários</a></li>
+                                    </ul>
+                                </div>
+                                <div class="box-lateral ativo">
+                                    <h3>Configurações</h3>
+                                    <ul>
+                                        <li><a href="/Usuario/AlterarSenha">Alterar senha</a></li>
+                                        <li><a href="/Login/Logout">Sair</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="conteudo-principal">
+                                <div class="box-conteudo" id="bloco-alterar-senha">
+                                    <h4>Alterar senha</h4>
+                                    @if (ViewBag.MensagemAlterarSenhaOK != null)
+                                    {
+                                    <div class="alert alert-success" role="alert">
+                                        @ViewBag.MensagemAlterarSenhaOK
+                                    </div>
+                                    }
+                                    @if (ViewBag.MensagemAlterarSenhaFail != null)
+                                    {
+                                    <div class="alert alert-warning" role="alert">
+                                        @ViewBag.MensagemAlterarSenhaFail
+                                    </div>
+                                    }
+                                    <div class="campos">
+                                        <div class="row">
+                                            <div class="col-md-6  offset-md-3">
+                                                <label>Email:</label>
+                                                <input type="text" class="form-control" id="txtEmail" name="txtEmail" value="@Model.Email" disabled>
+                                                <input type="hidden" id="hdEmail" value="@Model.Email" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6  offset-md-3">
+                                                <label>Senha atual:</label>
+                                                <input type="password" id="txtSenhaAtual" name="txtSenhaAtual" class="form-control">
+                                            </div>
+                                        </div>		
+                                        <div class="row">
+                                            <div class="col-md-6  offset-md-3">
+                                                <label>Nova senha:</label>
+                                                <input type="password" id="txtSenha" name="txtSenha" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6  offset-md-3">
+                                                <label>Repetir senha:</label>
+                                                <input type="password" id="txtSenhaConfirmar" name="txtSenhaConfirmar" class="form-control">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="botao-box-conteudo">
+                                <button class="btn btn-secundario btn-amarelo" id="btnSalvar" type="button" name="btnSalvar" >Salvar</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+</main>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnSalvar").click(function () {
+            $("form").submit();
+
+            //NovaSenha = document.getElementById('txtSenha').value;
+            //CNovaSenha = document.getElementById('txtSenhaConfirmar').value;
+            //if (NovaSenha != CNovaSenha) {
+            //} else {
+            //    $("form").submit();
+            //}
+        });
+
+    });
+</script>

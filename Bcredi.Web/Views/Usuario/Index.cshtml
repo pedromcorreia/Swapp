@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SystemOne.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<main role="main" class="container">
+    <section class="div-borda col-md-4 col-md-offset-4" role="form" id="cliente">
+        <form class="row fm-iniciar form-group">
+            <div class="row">
+                <div class="form-group">
+                    <h2 class="text-center">Usuários</h2>
+                </div>
+                <button type="button" class="button buttonBlue" onclick="window.location.href = '/Usuario/Create'">
+                    CRIAR
+                    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                </button>
+                <button type="button" class="button buttonBlue" onclick="window.location.href = '/Usuario/Listar'">
+                    LISTAR
+                    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                </button>
+                <button type="button" class="button buttonBlue" onclick="window.location.href = '/Usuario/Editar'">
+                    EDITAR
+                    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                </button>
+                <button type="button" class="button buttonBlue" onclick="window.location.href = '/Seguranca/Index'">
+                    VOLTAR
+                    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+                </button>
+            </div>
+        </form>
+    </section>
+</main>

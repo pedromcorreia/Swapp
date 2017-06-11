@@ -1,0 +1,84 @@
+﻿@model Bcredi.DAO.Models.Usuario
+@{
+    Layout = "~/Views/Shared/_Layout_Bcredi.cshtml";
+    ViewBag.Title = "Perguntas Frequentes";
+}
+
+	<main>
+
+		<section id="conteudo">
+			<div class="container">
+				<div class="box-principal conteudo-interno">
+					<h1>FAQ</h1>
+					<p>Confira nossa seção de dúvidas e perguntas frequentes.</p>
+					
+					<div class="faq">
+  						<div class="panel-group" id="accordion">
+  							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#bloco-um">
+										Taxa de juros
+										</a>
+									</h4>
+								</div>
+								<div id="bloco-um" class="panel-collapse collapse in">
+									<div class="panel-body">
+										<p class="pergunta"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> O que é empréstimo bancário?</p>
+										<p class="resposta">É um contrato entre o cliente e a instituição financeira pelo qual ele recebe uma quantia que deverá ser devolvida ao banco em prazo determinado, acrescida dos juros acertados. Os recursos obtidos no empréstimo não têm destinação específica.</p>
+										<p class="pergunta"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> O que é financiamento?</p>
+										<p class="resposta">Assim como o empréstimo bancário, o financiamento também é um contrato entre o cliente e a instituição financeira, mas com destinação específica dos recursos tomados, como, por exemplo, a aquisição de veículo ou de bem imóvel. Geralmente o financiamento possui algum tipo de garantia, como, por exemplo, alienação fiduciária ou hipoteca.</p>        
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#bloco-dois">
+										Financiamento
+										</a>
+									</h4>
+								</div>
+								<div id="bloco-dois" class="panel-collapse collapse">
+									<div class="panel-body">
+										<p class="pergunta"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Pergunta 1</p>
+										<p class="resposta">É um contrato entre o cliente e a instituição financeira pelo qual ele recebe uma quantia que deverá ser devolvida ao banco em prazo determinado, acrescida dos juros acertados. Os recursos obtidos no empréstimo não têm destinação específica.</p>
+										<p class="pergunta"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Pergunta 2</p>
+										<p class="resposta">Assim como o empréstimo bancário, o financiamento também é um contrato entre o cliente e a instituição financeira, mas com destinação específica dos recursos tomados, como, por exemplo, a aquisição de veículo ou de bem imóvel. Geralmente o financiamento possui algum tipo de garantia, como, por exemplo, alienação fiduciária ou hipoteca.</p>        
+									</div>
+								</div>
+							</div>	
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#bloco-tres">
+										Avaliação do imóvel
+										</a>
+									</h4>
+								</div>
+								<div id="bloco-tres" class="panel-collapse collapse">
+									<div class="panel-body">
+										<p class="pergunta"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Pergunta 1</p>
+										<p class="resposta">Resposta 1.</p>
+										<p class="pergunta"><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Pergunta 2</p>
+										<p class="resposta">Resposta 2.</p>        
+									</div>
+								</div>
+							</div>														
+  						</div>					
+					</div>
+					
+				</div>
+			</div>
+		</section>
+
+		</main>
+	
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btncriar").click(function () {
+            $("form").submit();
+        })
+
+    });
+</script>

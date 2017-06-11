@@ -1,0 +1,87 @@
+﻿@{
+	ViewBag.Title = "Bem vindo ao Swapp";      
+	Layout = "~/Views/Shared/_Layout_LoginCadastro.cshtml";
+}
+
+<main>
+    <section id="login">
+        <div class="container">
+            <div class="box-principal">
+                <center><h1><img src="~/Imagens/SwappLogo.PNG" /></h1></center>
+                <p class="text-center inicial mb-30">Seja bem vindo ao Swapp.</p>
+
+                @using (Html.BeginForm("LoginSistema", "Login", FormMethod.Post,
+                        new { @class = "fm-iniciar", role = "form", id = "loginForm", name = "loginForm", novalidate = "novalidate" }))
+                {
+                    if (ViewBag.MensagemLoginInvalido != null)
+                    {
+                        <div class="alert alert-warning" role="alert">
+                            @Html.Raw(@ViewBag.MensagemLoginInvalido)   
+                        </div>
+                    }
+
+                    <fieldset>
+                        <div class="form-group">
+                            <label>Login:</label>
+                            <input type="email" class="form-control"
+                                   autocomplete="off" required="required" id="txtLogin" name="txtLogin" value="@ViewBag.txtLogin">
+                        </div>
+                        <div class="form-group">
+                            <label>Senha:</label>
+                            <input type="password" class="form-control"
+                                   autocomplete="off" required="required" id="txtPassword" name="txtPassword" value="@ViewBag.txtPassword">
+                            <small><a href="/Login/EsqueciSenha" id="ahref">Esqueceu a senha?</a></small>
+                        </div>
+                        <input type="hidden" id="hdnNovaUrl" name="hdnNovaUrl" value="@ViewBag.ReturnUrl" />
+                        <center>
+                            <div class="botao">
+                                <button type="submit" class="btn btn-principal">Entrar</button>
+                            </div>
+                        </center>
+                    </fieldset>
+                }
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#ahref').click(function () {
+            var vLogin = $("#txtLogin").val();
+            $("#ahref").attr("href", "/Login/EsqueciSenha?vLogin=" + vLogin);
+
+         
+        });
+
+
+        $("#loginForm").validate({
+            onkeyup: false,
+            errorClass: "error-message",
+            rules: {
+                txtLogin: {
+                    required: true
+                },
+                txtPassword: {
+                    required: true
+                }
+            },
+            messages: {
+                txtLogin: {
+                    required: "Campo Login não foi preenchido",
+                    email: "Digite um endereço de e-mail válido"
+                },
+                txtPassword: {
+                    required: "Campo Senha não foi preenchido"
+                }
+            },
+            submitHandler: function (form) {
+                showLoadingModal();
+                form.submit();
+            }
+        });
+    });
+
+</script>

@@ -1,0 +1,10 @@
+C:\Projetos-Bcredi\branches\005_SegundaFasAreaLogada\Clicksign\bin\Debug\Clicksign.xml
+C:\Projetos-Bcredi\branches\005_SegundaFasAreaLogada\Clicksign\bin\Debug\Clicksign.dll
+C:\Projetos-Bcredi\branches\005_SegundaFasAreaLogada\Clicksign\bin\Debug\Clicksign.pdb
+C:\Projetos-Bcredi\branches\005_SegundaFasAreaLogada\Clicksign\bin\Debug\log4net.dll
+C:\Projetos-Bcredi\branches\005_SegundaFasAreaLogada\Clicksign\bin\Debug\RestSharp.dll
+C:\Projetos-Bcredi\branches\005_SegundaFasAreaLogada\Clicksign\bin\Debug\log4net.xml
+C:\Projetos-Bcredi\branches\005_SegundaFasAreaLogada\Clicksign\bin\Debug\RestSharp.xml
+C:\Projetos-Bcredi\branches\005_SegundaFasAreaLogada\Clicksign\obj\Debug\Clicksign.csprojResolveAssemblyReference.cache
+C:\Projetos-Bcredi\branches\005_SegundaFasAreaLogada\Clicksign\obj\Debug\Clicksign.dll
+C:\Projetos-Bcredi\branches\005_SegundaFasAreaLogada\Clicksign\obj\Debug\Clicksign.pdb

@@ -1,0 +1,881 @@
+/****
+
+DATA: 30/03/2017
+VERSAO: 1.0
+ESTRUTURA
+
+/***************************************************/
+
+/*
+
+0. 	PARÂMETROS GERAIS
+1.  HEADER / NAV
+2.	PROPOSTA LATERAL
+3.	BASE COMUM
+4.	BOX PRINCIPAL
+5.	FOOTER
+6.  BLOCOS LATERAIS
+7.  MODAL
+8.  MIGALHAS
+9.	TABELA PROPOSTA
+
+*/
+
+/***************************************************/
+
+/* 0. PARÂMETROS GERAIS */
+
+body {
+    background-color: #FCFCFC;
+	font-family: 'Open Sans', sans-serif;
+	overflow-x: hidden;
+}
+
+main {
+	overflow: hidden;
+}
+
+.conteudo-interno {
+	padding: 25px !important;
+}
+
+/***************************************************/
+
+/* 1. HEADER / NAV */
+
+.navbar-default {
+	background: #fff url(../img/bg-barra.png) top center no-repeat;
+    border-color: none;
+}
+
+.navbar {
+    border-radius: 0px;
+}
+
+.navbar {
+    border: none;
+    height: 113px;
+	border-bottom: 1px #EBEBEB solid;
+}
+
+.navbar-brand {
+    height: 44px;
+    padding: 10px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color:#EAEAEA;
+	font-size: 13px;
+	font-weight: 600;
+	text-shadow: 0 1px 1px #777;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color:#fff;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+    background-color: transparent;
+    color: #fff;
+}
+
+.dropdown-menu > li > a {
+    color: #555;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #fff;
+}
+
+.navbar-right .dropdown-menu {
+    border-radius: 0px;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.176);
+    min-width: 143px;
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    background-color: transparent;
+    color: #222;
+}
+
+.dropdown-menu > li {
+	padding: 6px 0;
+}
+
+.dropdown-menu > .linha-menu {
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.nav > li > a {
+    display: block;
+    padding: 9px 10px;
+    position: relative;
+}
+
+.navbar-right a i {
+	font-size: 20px;
+	color:#F6C305;
+	text-shadow: 0 1px 1px #999;
+	padding: 10px 0 0 0;
+}
+
+.navbar-right a:hover i {
+	font-size: 20px;
+	color:#F6C305;
+	text-shadow: 0 1px 1px #333;
+	padding: 10px 0 0 0;
+}
+
+.navbar-right .logout-barra {
+	margin: 8px 0 0 10px;
+}
+
+ul.menu-navegacao, ul.menu-auxilio {
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+ul.menu-navegacao {
+	margin-left: -5px;
+}
+
+ul.menu-navegacao li, ul.menu-auxilio li {
+	display: inline;
+	line-height: 55px;
+}
+
+ul.menu-navegacao li {
+	padding: 0 15px 0 0;
+}
+
+ul.menu-navegacao a {
+	color:#3A5898;
+}
+
+ul.menu-navegacao a.active, ul.menu-navegacao a.active:hover {
+	color:#F6C305;
+	font-weight: 700;
+	border-bottom: 2px solid #F6C305;
+	line-height: 130%;
+	text-decoration: none;
+}
+
+ul.menu-navegacao a:hover {
+	color:#3A5898;
+	font-weight: 600;
+	border-bottom: 2px solid #3A5898;
+	line-height: 130%;
+	text-decoration: none;
+}
+
+ul.menu-auxilio li {
+	padding: 0 0 0 10px;
+}
+
+ul.menu-auxilio i {
+	margin-right: 3px;
+	font-size: 18px;
+}
+
+ul.menu-auxilio a {
+	color:#19335F;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+ul.menu-auxilio a:hover {
+	color:#3A5898;
+	text-decoration: none;
+}
+
+ul.menu-auxilio a.active {
+	color:#F6C305;
+	text-decoration: none;
+	border-bottom: 2px solid #F6C305;
+	line-height: 130%;	
+}
+
+ul.menu-auxilio .badge {
+	top:-10px;
+    background-color: #FC4B47;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    min-width: 10px;
+    padding: 4px 6px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+	margin-left: 3px;
+}
+
+ul.menu-auxilio a.active .badge {
+    background-color: #F6C305;
+}
+
+/***************************************************/
+
+/* 2. PROPOSTA LATERAL */
+
+#slide-resumo-proposta {
+    background: #fff;
+	border:2px solid #F6C305;
+	box-shadow: 2px 0 5px #888;
+    position: absolute;
+    width: 480px;
+    height: auto;
+    top: 145px;
+    right:-480px;
+	z-index: 100;
+}
+    
+#slide-resumo-proposta-botao {
+    position: absolute;
+    top: 0; 
+	left: -40px;
+    height: 39px;
+    width: 40px;
+	cursor: pointer;
+}
+
+#resumo-proposta {
+    float:left;
+	width: 100%;
+	padding: 10px 20px;
+}
+
+#resumo-proposta h6 {
+	font-size: 16px;
+	text-transform: uppercase;
+	color:#444444;
+	margin-bottom: 15px;
+	font-weight: 700;
+}
+
+#resumo-proposta .tipo-proposta {
+	background: url(../img/ico-resumo.png) no-repeat;
+	padding-left: 10px;
+	color:#444;
+	font-size: 13px;
+	border-bottom: 2px solid #F6C305;
+	padding-bottom: 3px;
+	width: 300px;
+	margin-bottom: 25px;
+}
+
+#resumo-proposta .tab-proposta {
+	margin-bottom: 25px;
+}
+
+#resumo-proposta .tab-proposta .borda {
+	border-bottom: 1px solid #F6F6F6;
+	height: 35px;
+}
+
+#resumo-proposta .tab-proposta .info {
+	text-align: right;
+	border-right: 1px solid #F6F6F6;
+	padding-right: 15px;
+	color:#454545;
+	font-size: 12px;
+}
+
+#resumo-proposta .tab-proposta .dados {
+	text-align: left;
+	padding-left: 15px;
+	color:#353535;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+/***************************************************/
+
+/* 3. BASE COMUM */
+
+section#navegacao-passos {
+	margin-bottom: 30px;
+}
+
+section#conteudo {
+	margin: 15px 0 0 0;
+	padding-bottom: 10px;
+}
+
+section#conteudo .box-principal {
+	box-shadow: 0 0 10px #E5E5E5;
+	background: #fff;
+	padding: 0px;
+	/*overflow: hidden;*/
+}
+
+section#conteudo .resumo-info {
+	padding: 20px;
+	overflow: hidden;
+}
+
+/***************************************************/
+
+/* 4. CONTEUDO PRINCIPAL */
+
+.conteudo-box {
+	margin: 0px 0 0 0;
+}
+
+.conteudo-principal {
+	margin: 0px 0 0 0;
+	overflow:hidden;
+	display:block;
+}
+
+.box-conteudo {
+	border:1px solid #DCE0E0;
+	background: #fff;
+	margin-bottom: 20px;
+}
+
+.box-conteudo:last-child {
+	margin-bottom: 0;
+}
+
+.box-conteudo .campos {
+	padding: 10px;
+}
+
+.botao-box-conteudo {
+	margin: 20px 0 0 0;
+}
+
+.btn-resumo {
+	text-align: center;
+	margin-bottom: 30px;
+		
+}
+
+.botao-final-conteudo {
+	text-align:center;
+	margin:40px 0 20px 0; 
+}
+
+/***************************************************/
+
+/* 5. FOOTER */
+
+footer {
+	padding: 0 0 25px 0;
+	margin-top: 20px;
+}
+
+footer p {
+	font-size: 10px;
+	color: #B0B0B0;
+	font-weight: 600;
+	padding-bottom: 5px;
+}
+
+footer ul.info-contato {
+	float: right;
+}
+
+footer ul.info-contato li {
+	display: inline;
+	margin-left: 15px;
+	color:#909090;
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	line-height: 150%;	
+}
+
+footer ul.info-contato i {
+	color:#909090;
+	font-size: 14px;
+	margin-right: 2px;
+}
+
+footer a, footer a:hover {
+	color:#909090;
+	text-decoration: none;
+}
+
+/***************************************************/
+
+/* 6. BLOCOS LATERAIS */
+
+.box-lateral {
+	background: #fff;
+	border:1px solid #DCE0E0;
+	margin-bottom: 25px;
+}
+
+.box-lateral:last-child {
+	margin-bottom: 0;
+}
+
+.conteudo-box .ativo {
+	border:1px solid #3B4D7F;
+	box-shadow: 0 0px 5px #999;
+}
+
+.box-lateral h3 {
+	background: #FAE182;
+	font-size: 14px;
+	text-transform: uppercase;
+	color:#464646;
+	letter-spacing: 2px;
+	padding: 0 10px;
+	line-height: 40px;
+	height: 40px;
+	margin-bottom: 0;
+	font-weight: 300;
+}
+
+.box-lateral ul li {
+	border-bottom: 1px solid #DCE0E0;
+	padding: 0 10px;
+	height: 50px;
+	line-height: 50px;
+}
+
+.box-lateral ul li:last-child {
+	border-bottom: none;	
+}
+
+.box-lateral ul li a {
+	color:#1E579F;
+	font-size: 15px;
+	text-decoration: underline;
+}
+
+.box-lateral ul li a:hover {
+	text-decoration: none;
+}
+
+.box-lateral i {
+	float: right;
+	font-size: 16px;
+	line-height: 50px;
+}
+
+.box-lateral ul li a.sem-link {
+	text-decoration: none;
+}
+
+.box-lateral li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
+.box-lateral i.fa-check-circle { color:#29B700;}
+.box-lateral i.fa-exclamation-circle { color:#B70000;}
+.box-lateral i.fa-exclamation-triangle  { color:#FFA500;}
+
+/***************************************************/
+
+/* 7. MODAL */
+
+.modal-dialog {
+	max-width:400px;
+	text-align: center;
+}
+
+.modal-content {
+	box-shadow:3px 3px 6px #757272; 
+	background:#fff; 
+	border-radius:0px;
+	padding: 15px;
+	border:1px solid #fff;
+}
+
+.modal-body h2 { 
+	font-size:22px; 
+	color:#395898;
+	margin-bottom: 15px;
+}
+
+.modal-body p {
+	line-height: 140%;
+}
+
+.modal-body label {
+    color: #555555;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.modal-body p {
+	margin-bottom: 10px;
+}
+
+/* Para zoom */
+
+.file-zoom-dialog > .modal-dialog {
+    max-width:900px!important;
+	width:900px;
+	background:red;
+}
+
+.file-zoom-dialog > .modal-dialog .modal-content {
+	padding:0;
+}
+
+.file-zoom-dialog h3.modal-title {
+	border-bottom: none;
+	font-weight:600;
+	text-align:left;
+}
+
+/***************************************************/
+
+/* 8. MIGALHAS */
+
+/* Primeira etapa */
+
+#breadcrumbs {
+	border-radius: 5px;
+	padding: 15px 0;
+	z-index: 1;
+	width: 100%;
+	display: block;
+}
+
+#breadcrumbs li {
+	float: left;
+	box-shadow: 0 0px 5px rgba(0,0,0,.2);
+	background: #E8EAEF;
+}
+
+#breadcrumbs a {
+	padding: 10px 55px 10px 65px;
+	float: left;
+	text-decoration: none;
+	color: #3B4D7F;
+	font-size: 16px;
+	position: relative;
+	font-weight: 400;
+	background-color: #E8EAEF;
+	border:1px solid #fff;
+}
+
+#breadcrumbs li:first-child a {
+	padding-left: 50px;
+	border-radius: 5px 0 0 5px;
+}
+
+#breadcrumbs a:hover {
+	background: #3B4D7F;
+	color:#F6C305;
+	border:1px solid #3B4D7F!important;
+}
+
+#breadcrumbs li a.ativo {
+	background: #3B4D7F!important;
+	color:#F6C305!important;
+	font-weight: 700!important;
+	border:1px solid #3B4D7F!important;
+}
+
+#breadcrumbs a.ativo::after { 
+	z-index: 2;
+	border-left-color: #3B4D7F;  
+}
+
+#breadcrumbs a::after,
+#breadcrumbs a::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	margin-top: -1.5em;   
+	border-top: 1.5em solid transparent;
+	border-bottom: 1.5em solid transparent;
+	border-left: 1em solid;
+	right: -1em;
+}
+
+#breadcrumbs a::after { 
+	z-index: 2;
+	border-left-color: #E8EAEF;  
+}
+
+#breadcrumbs a::before {
+	border-left-color: #D0D5DF;  
+	right: -1.1em;
+	z-index: 1; 
+}
+
+#breadcrumbs a:hover::after { 
+	border-left-color:#3B4D7F;
+}
+
+#breadcrumbs .current,
+#breadcrumbs .current:hover {
+	font-weight: bold;
+	background: #3B4D7F;
+}
+
+#breadcrumbs .current::after,
+#breadcrumbs .current::before{
+	content: normal;  
+}
+
+#breadcrumbs i { 
+	margin-top:-10px;
+	z-index: 100;
+}
+
+#breadcrumbs sup {
+	top: -1.9em;
+	right: -69px;
+	z-index: 100;
+}
+
+/* Segunda etapa */
+
+#migalhas-etapas {
+	border-radius: 5px;
+	padding: 15px 0;
+	z-index: 1;
+	width: 100%;
+	display: block;
+}
+
+#migalhas-etapas li {
+	float: left;
+	box-shadow: 0 0px 5px rgba(0,0,0,.2);
+	background: #E8EAEF;
+}
+
+#migalhas-etapas a {
+	padding: 10px 15px 10px 37px;
+	float: left;
+	text-decoration: none;
+	color: #3B4D7F;
+	font-size: 13px;
+	position: relative;
+	font-weight: 400;
+	background-color: #E8EAEF;
+	border:1px solid #fff;
+}
+
+#migalhas-etapas li:first-child a {
+	padding-left: 20px;
+	border-radius: 3px 0 0 3px;
+}
+
+#migalhas-etapas a:hover {
+	background: #3B4D7F;
+	color:#F6C305;
+	border:1px solid #3B4D7F!important;
+}
+
+#migalhas-etapas li a.ativo {
+	background: #3B4D7F!important;
+	color:#F6C305!important;
+	font-weight: 700!important;
+	border:1px solid #3B4D7F!important;
+}
+
+#migalhas-etapas a.ativo::after { 
+	z-index: 2;
+	border-left-color: #3B4D7F;  
+}
+
+#migalhas-etapas a::after,
+#migalhas-etapas a::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	margin-top: -1.8em;   
+	border-top: 1.8em solid transparent;
+	border-bottom: 1.8em solid transparent;
+	border-left: 1em solid;
+	right: -1em;
+}
+
+#migalhas-etapas a::after { 
+	z-index: 2;
+	border-left-color: #E8EAEF;  
+}
+
+#migalhas-etapas a::before {
+	border-left-color: #D0D5DF;  
+	right: -1.1em;
+	z-index: 1; 
+}
+
+#migalhas-etapas a:hover::after { 
+	border-left-color:#3B4D7F;
+}
+
+#migalhas-etapas .current,
+#migalhas-etapas .current:hover {
+	font-weight: bold;
+	background: #3B4D7F;
+}
+
+#migalhas-etapas .current::after,
+#migalhas-etapas .current::before{
+	content: normal;  
+}
+
+#migalhas-etapas i { 
+	margin-top:-10px;
+	z-index: 100;
+}
+
+#migalhas-etapas sup {
+	top: -1.9em;
+	right: -30px;
+	z-index: 100;
+}
+
+/* Terceira etapa com dívida */
+
+#migalhas-etapas-divida {
+	border-radius: 5px;
+	padding: 15px 0;
+	z-index: 1;
+	width: 100%;
+	display: block;
+}
+
+#migalhas-etapas-divida li {
+	float: left;
+	box-shadow: 0 0px 5px rgba(0,0,0,.2);
+	background: #E8EAEF;
+}
+
+#migalhas-etapas-divida a {
+	padding: 10px 8px 10px 30px;
+	float: left;
+	text-decoration: none;
+	color: #3B4D7F;
+	font-size: 12px;
+	position: relative;
+	font-weight: 400;
+	background-color: #E8EAEF;
+	border:1px solid #fff;
+}
+
+#migalhas-etapas-divida li:first-child a {
+	padding-left: 15px;
+	border-radius: 3px 0 0 3px;
+}
+
+#migalhas-etapas-divida a:hover {
+	background: #3B4D7F;
+	color:#F6C305;
+	border:1px solid #3B4D7F!important;
+}
+
+#migalhas-etapas-divida li a.ativo {
+	background: #3B4D7F!important;
+	color:#F6C305!important;
+	font-weight: 700!important;
+	border:1px solid #3B4D7F!important;
+}
+
+#migalhas-etapas-divida a.ativo::after { 
+	z-index: 2;
+	border-left-color: #3B4D7F;  
+}
+
+#migalhas-etapas-divida a::after,
+#migalhas-etapas-divida a::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	margin-top: -1.8em;   
+	border-top: 1.8em solid transparent;
+	border-bottom: 1.8em solid transparent;
+	border-left: 1em solid;
+	right: -1em;
+}
+
+#migalhas-etapas-divida a::after { 
+	z-index: 2;
+	border-left-color: #E8EAEF;  
+}
+
+#migalhas-etapas-divida a::before {
+	border-left-color: #D0D5DF;  
+	right: -1.1em;
+	z-index: 1; 
+}
+
+#migalhas-etapas-divida a:hover::after { 
+	border-left-color:#3B4D7F;
+}
+
+#migalhas-etapas-divida .current,
+#migalhas-etapas-divida .current:hover {
+	font-weight: bold;
+	background: #3B4D7F;
+}
+
+#migalhas-etapas-divida .current::after,
+#migalhas-etapas-divida .current::before{
+	content: normal;  
+}
+
+#migalhas-etapas-divida i { 
+	margin-top:-10px;
+	z-index: 100;
+}
+
+#migalhas-etapas-divida sup {
+	top: -1.9em;
+	right: -15px;
+	z-index: 100;
+}
+
+/***************************************************/
+
+/* 9. PROPOSTA */
+
+#area-tab-proposta .tipo-proposta {
+	background: url(../img/ico-resumo.png) no-repeat;
+	padding-left: 10px;
+	color:#444;
+	font-size: 13px;
+	border-bottom: 2px solid #F6C305;
+	padding-bottom: 3px;
+	width: 260px;
+	margin-bottom: 25px;
+}
+
+#area-tab-proposta .tab-proposta .borda {
+	border-bottom: 1px solid #F6F6F6;
+	height: 35px;
+}
+
+#area-tab-proposta .tab-proposta .info {
+	text-align: right;
+	border-right: 1px solid #F6F6F6;
+	padding-right: 15px;
+	color:#454545;
+	font-size: 12px;
+}
+
+#area-tab-proposta .tab-proposta .dados {
+	text-align: left;
+	padding-left: 15px;
+	color:#353535;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+/***************************************************/

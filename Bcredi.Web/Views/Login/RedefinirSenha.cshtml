@@ -1,0 +1,171 @@
+﻿@model Bcredi.DAO.Models.Usuario
+@{
+	ViewBag.Title = "Altere sua senha";      
+	Layout = "~/Views/Shared/_Layout_LoginCadastro.cshtml";
+}
+
+<main>
+    <section id="cadastro">
+        <div class="container">
+            @using (Html.BeginForm("RedefinirSenha", "Login", FormMethod.Post,
+                    new { id = "redefSenhaForm", @class = "fm-iniciar", role = "form", novalidate = "novalidate" }))
+            {
+                <div class="box-principal">
+                    <center><h1><img src="../Content/img/acesso/logo.png" alt="Bcredi"></h1></center>
+                    <p class="text-center inicial mb-30">Esqueceu a senha? Crie outra.</p>
+                    <div class="alert alert-danger hide">
+                        <i class="fa fa-times-circle" aria-hidden="true"></i>Ocorreu um <strong>erro</strong>! Por favor, tente novamente.
+                        <label id="lblMsgErro" name="lblMsgErro"/>
+                    </div>
+
+                    @*<form>*@
+                    <fieldset>
+                        <div class="form-group">
+                            <label>Senha:</label>
+                            <input type="password" class="form-control" id="txtNovaSenha" name="txtNovaSenha" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Repetir a senha:</label>
+                            <input type="password" class="form-control" id="txtCNovaSenha" name="txtCNovaSenha" required>
+                        </div>
+                        <center>
+                            <div class="botao">
+                                <button type="button" id="btSalvar" class="btn btn-principal btn-amarelo">Salvar</button> <span class="">ou</span> <a href="">Fazer login</a>
+                                @*<button type="submit" class="btn btn-principal btn-amarelo" data-toggle="modal" data-target="#aviso-senha">Salvar</button> <span class="">ou</span> <a href="/Login/Login">Fazer login</a>*@
+                            </div>
+                        </center>
+                    </fieldset>
+                    @*if (Model != null)
+                        {*@
+                    <input type="hidden" id="hdnLogin" name="hdnLogin" value="@Model.Login" />
+                    <input type="hidden" id="hdnCodSeguranca" name="hdnCodSeguranca" value="@Model.Password" />
+
+                    @*}*@
+                    @*<input type="hidden" id="hdnNovaUrl" name="hdnNovaUrl" value="@ViewBag.ReturnUrl" />
+                        <input type="submit" id="btnRedefinirSenha" class="button buttonBlue btn btn-default" value="Redefinir senha">*@
+                    @*</form>*@
+                </div>
+            }
+        </div>
+    </section>
+</main>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            
+            <div class="modal-body">
+                <h2>Nova senha criada <span class="destaque">com sucesso</span>!</h2>
+                <p>Agora é só fazer o login e começar a usar o Bcredi :)</p>
+                <button type="button" id="btModal" class="btn btn-medio btn-cinza mt-30" data-dismiss="modal" onclick="window.location.href = '/Login/Login'">Fechar</button>
+            </div>            
+        </div>
+
+    </div>
+</div>
+<!--
+<div id="aviso-senha" class="modal fade" role="dialog">
+    <div class="modal-dialog margin-auto">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h2>Nova senha criada <span class="destaque">com sucesso</span>!</h2>
+                <p>Agora é só fazer o login e começar a usar o Bcredi :)</p>
+                <button type="button" id="btModal" class="btn btn-medio btn-cinza mt-30" data-dismiss="modal" onclick="window.location.href = '/Login/Login'">Fechar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+-->
+@*<button type="button" class="btn btn-medio btn-cinza mt-30" data-dismiss="modal" onclick="window.location.href = '/Login/RedefinirSenha'">Fechar</button>*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btSalvar").click(function () {
+            
+            var isFormValid = true;
+            var msgErro = "";
+
+            $(".alert-danger").addClass("hide");
+
+            var txtNovaSenha = $("#txtNovaSenha").val();
+            var txtCNovaSenha = $("#txtCNovaSenha").val();
+
+            if (txtNovaSenha == '') {
+                msgErro += 'O campo Senha é obrigatório! ';
+            } else {
+                if (txtNovaSenha.length < 4) {
+                    msgErro += 'O campo Senha deve ter no mínimo 4 dígitos. ';
+                }
+            }
+
+            if (txtCNovaSenha != txtNovaSenha) {
+                msgErro += 'O campo Repetir Senha deve ser idêntico ao campo Senha.';
+            }
+
+            if (msgErro != '') {
+
+                $(".alert-danger").fadeIn(1000);
+                $(".alert-danger").find('#lblMsgErro').text(msgErro);
+                $(".alert-danger").removeClass("hide");
+                $(".alert-danger").delay(5000).fadeOut(2000);
+
+                isFormValid = false;
+            }
+
+            if (isFormValid) {
+                $("#myModal").modal("show");
+            }
+
+        });
+
+        $("#aviso-senha").dialog({
+            autoOpen: false
+        });
+
+        $("#btModal").click(function () {
+            $("form").submit();
+        });
+
+        /*
+        $('#redefSenhaForm').validate({
+            rules: {
+                txtNovaSenha: {
+                    minlength: 5,
+                    required: true
+                },
+                txtCNovaSenha: {
+                    minlength: 5,
+                    required: true,
+                    equalTo: "#txtNovaSenha"
+                }
+            },
+            messages: {
+                txtNovaSenha: {
+                    minlength: "A campo Senha deve ter no mínimo 5 dígitos.",
+                    required: "O campo Senha é obrigatório."
+                },
+                txtCNovaSenha: {
+                    minlength: "A campo Repetir Senha deve ter no mínimo 5 dígitos.",
+                    required: "O campo Repetir Senha é obrigatório.",
+                    equalTo: "O campo Repetir Senha deve ser identico ao campo Senha."
+                }
+            },
+            submitHandler: function (form) {
+
+                $("#myModal").modal('show');               
+                return false;
+
+                $("#btModal").click(function () {
+                    form.submit();
+                    window.location.href = '/Login/Login';
+                });
+            }
+        });
+        */
+    });
+</script>

@@ -1,0 +1,36 @@
+﻿@model  Bcredi.DAO.Models.ViewModel.TipoDocumentoViewModel
+
+@{
+    var guid = Guid.NewGuid().ToString().Replace("-","");
+    var guid2 = Guid.NewGuid().ToString().Replace("-", "");
+    var name = guid ;
+    string guidUsuario = Model.GuidUsuario;
+    var urlDestino = Model.UrlServicoUpload;
+    string idTipoDocumento = Model.GuidTipoDocumento;
+    string guidProposta = Model.GuidProposta;
+    string descricaoTipoDocumento = Model.TipoDocumentoDescricao;
+    int idStatusDocumento = Model.IdStatusDocumento;
+    string campoGenerico = Model.CampoGenerico;
+}
+
+<label class="documento-instrucao">@descricaoTipoDocumento:</label>
+<div>
+    <input id="@guid" name="@guid2" type="file" multiple class="file-loading">
+    <script type="text/javascript">
+        var $a@(guid) = $("#@guid");
+
+        $a@(guid).fileinput({
+            uploadUrl: '@urlDestino',
+            uploadAsync: false,
+            showRemove: false,
+            showUpload: false,
+            minFileCount: 1,
+            maxFileCount: 1000,
+            language: 'pt-BR',
+            uploadExtraData: { guidUsuario: '@guidUsuario', guidProposta: '@guidProposta', idtipodocumento: '@idTipoDocumento', idstatusdocumento: '@idStatusDocumento', campoGenerico: '@campoGenerico' }
+        }).on("filebatchselected", function (event, files) {
+            // trigger upload method immediately after files are selected
+            $a@(guid).fileinput("upload");
+        });
+    </script>
+</div>

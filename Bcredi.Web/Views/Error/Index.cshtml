@@ -1,0 +1,61 @@
+﻿@model Bcredi.Models.Error
+<style>
+    #errorMessage {
+        color: red;
+        font-weight: bold;
+        padding-top: 20px;
+    }
+</style>
+
+
+<section id="conteudo">
+    <div class="container">
+        <div class="box-principal">
+
+            <div class="resumo-info">
+
+                <div id="errorMessage">
+                    @{
+                        string message = null;
+
+                        switch (Model.HttpStatusCode)
+                        {
+                            case 404:
+                                message = "Página não encontrada (erro 404)";
+                                break;
+                            case 500:
+                                message = Model.Exception.Message;
+                                //TODO: comentar linhas abaixo caso controller e action não devam ser expostas para o usuário
+                                message = string.Concat(message, "<br /><br />Controller Name: ");
+                                message = string.Concat(message, Model.ControllerSourceError);
+                                message = string.Concat(message, "<br />Action Name: ");
+                                message = string.Concat(message, Model.ActionSourceError);
+                                break;
+                        }
+                    }
+
+                    @Html.Raw(message)
+                </div>
+                <p>Não encontramos o que você está procurando.</p>
+                <p>A página que você procura não existe ou está fora do ar. Verifique a url digitada e tente novamente.</p>
+            </div>
+            <div id="chat-destaque">
+                <div class="box-chat">
+                    <h5>Precisando de ajuda?</h5>
+                    <p>O processo é simples e descomplicado, sempre que tiver qualquer dúvida, recorra aos nossos canais de atendimento, chat e FAQ.</p>
+                    <ul class="hidden-xs">
+                        <li><a href="javascript:void($zopim.livechat.window.show())" class="valign-center btnChat tags-ga" data-categoria="header" data-acao="clique"><img src="../../Content/img/ico-chat-g.png" alt="Chat"></a></li>
+                        <li><a href="mailto:contato@bcredi.com.br"><img src="../../Content/img/ico-mensagem-g.png" alt="Mensagem"></a></li>
+                        <li><img src="../../Content/img/ico-fone-g.png" alt="Telefone"></li>
+                    </ul>
+                    <ul class="visible-xs">
+                        <li><a href="javascript:void($zopim.livechat.window.show())" class="valign-center btnChat tags-ga" data-categoria="header" data-acao="clique"><img src="../../Content/img/ico-chat-g.png" alt="Chat"></a></li>
+                        <li><a href="mailto:contato@bcredi.com.br"><img src="../../Content/img/ico-mensagem-g.png" alt="Mensagem"></a></li>
+                        <li><img src="../../Content/img/ico-fone-g.png" alt="Telefone"></li>
+                    </ul>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,42 @@
+﻿@{
+	ViewBag.Title = "Link enviado com sucesso";    
+	Layout = "~/Views/Shared/_Layout_LoginCadastro.cshtml";
+}
+
+<main>
+    <section id="login">
+        <div class="container">
+            <div class="box-principal">
+                <center><h1><img src="../Content/img/acesso/logo.png" alt="Bcredi"></h1></center>
+                <p class="text-center cadastro-text mb-30">Link enviado <span class="destaque">com sucesso!</span></p>
+                <div class="conteudo-texto text-center">
+                    <p>Um link foi enviado para <span class="cor-link-azul">@ViewBag.Email</span>. Siga as instruções recebidas para criar uma nova senha.</p>
+                    <p>Caso não tenha recebido o link, verifique sua caixa de SPAM. Se ainda assim o email não chegar, solicite o <a href="" class="cor-link-azul" data-toggle="modal" data-target="#aviso-envio">reenvio do link</a>.</p>
+                </div>
+                <a href="/Login/Login" class="cor-link-amarelo text-uppercase"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>Voltar ao login</a>
+                <hr>
+                <div class="area-suporte">
+                    <p class="text-center inicial mb-30">Está com dúvidas? Entre em contato pelo chat ou envie um email.</p>
+                    <div class="area-botoes">
+						<div class="btn-chat"><a href="javascript:void($zopim.livechat.window.show())" class="valign-center btnChat tags-ga" data-categoria="header" data-acao="clique"><img src="../Content/img/acesso/btn-chat.png"></a></div>
+                        <div class="btn-email">@*<a href="mailto:webmaster@example.com"></a>*@<img src="../Content/img/acesso/btn-email.png"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="aviso-envio" class="modal fade" role="dialog">
+    <div class="modal-dialog margin-auto">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h2>Email enviado <span class="destaque">com sucesso</span>!</h2>
+                <p>Verifique em seu email o link para alterar sua senha.</p>
+                <button type="button" class="btn btn-medio btn-cinza mt-30" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

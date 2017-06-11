@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <!-- Favicon -->
+    <link href="~/Imagens/SwappLogo.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- Bootstrap -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</head>
+<body class="">
+    <div class="wallpaper">
+    @RenderBody()
+
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="info pull-right">
+                <ul class="info-contato"></ul>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

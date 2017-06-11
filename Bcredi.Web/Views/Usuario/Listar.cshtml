@@ -1,0 +1,124 @@
+﻿@model IEnumerable<SystemOne.Models.Usuario>
+
+@{
+    ViewBag.Title = "Listar";
+}
+
+
+@using (Html.BeginForm("Listar", "Usuario", FormMethod.Post))
+{
+    <div class="box-padrao">
+            <h2>Usuários do sistema</h2>
+        @Html.AntiForgeryToken()
+        <div class="row">
+      
+               
+                    <div class="form-group mb-20">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control foco-default w-100" id="txtBusca" name="txtBusca" maxlength="200" required="required">
+                        </div>
+                        <div class="col-md-2">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Buscar</button>
+                            </span>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="input-group-btn">
+                                <button class="btn w-120px" style="color:#3150B5" id="btnNovo" name="btnNovo" type="button">Novo</button>
+                            </span>
+                        </div>
+                    </div>
+
+		</div>
+              <div class="row">
+               <div class="col-md-12">
+                @if (Model != null)
+                {
+                    if (Model.Count() > 0)
+                    {
+                        <table class="table-striped table-bordered table-hover table-condensed mt-20">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Login</th>
+                                    <th>Ativo</th>
+                                    <th>Usuário que incluiu</th>
+                                    <th>Data Inclusão</th>
+                                    <th>Usuário que atualizou</th>
+                                    <th>Data Atualização</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.ActionLink("" + item.Id, "Editar/" + item.Id)
+                                        </td>
+                                        <td>@item.Nome</td>
+                                        
+                                        <td>@item.Login</td>
+
+                                        <td>
+                                            @if (item.IsAtivo)
+                                            {
+                                                <span class="glyphicon glyphicon-thumbs-up" />
+                                            }
+                                            else
+                                            {
+                                                <span class="glyphicon glyphicon-thumbs-down" />
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.UsuarioCriador != null)
+                                            {
+                                                @item.UsuarioCriador.Nome;
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.DataCriacao!= null && !item.DataCriacao.ToString().Equals("01/01/0001 00:00:00"))
+                                            {
+                                                @item.DataCriacao;
+                                            }
+                                        </td>
+
+                                        <td>
+                                            @if (item.UsuarioAtualizador != null)
+                                            {
+                                                @item.UsuarioAtualizador.Nome;
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.DataAtualizacao != null && !item.DataAtualizacao.ToString().Equals("01/01/0001 00:00:00"))
+                                            {
+                                                @item.DataAtualizacao;
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="col-lg-6">
+                            <div class="alert alert-success col-sm-12">
+                                Não existem dados para esta busca.
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnNovo").click(function () {
+                $("form").attr("action", "/Usuario/Editar/0");
+                $("form").submit();
+            });
+        });
+    </script>
+}

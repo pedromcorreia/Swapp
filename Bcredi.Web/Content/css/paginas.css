@@ -1,0 +1,1009 @@
+/****
+
+DATA: 06/04/2017
+VERSAO: 1.0
+CONTEÚDO DE UMA PÁGINA
+
+/***************************************************/
+
+/*
+1.  HOME / INDEX
+	1.A Conteúdo status da proposta
+	1.B Conteúdo assinatura digital 
+	1.C Chat
+	1.D Docuemntos
+	1.E Termo de aceite e box de contestação
+2.  PÁGINA DE MENSAGEM 
+3. 	PÁGINA DE FAQ
+4. 	BLOCO PADRÃO DE CONTEÚDO
+	4.A Geral
+	4.B Renda
+	4.C Documentos
+	4.D Cartórios
+
+*/
+
+/***************************************************/
+
+/*** 1. HOME / INDEX ***/
+
+/* 1.A Conteúdo status da proposta */
+
+#area-resumo-proposta {
+	margin: 30px 0 50px 0;
+}
+
+.bg-grafismo {
+	background: url(../img/bg-grafismo.jpg) no-repeat bottom center;
+	width: 100%;
+	min-height: 250px;
+	display: block;
+}
+
+.box-resumo {
+	border: 1px solid #F4DC32;
+	background: #fff;
+	padding: 40px 25px;
+	box-shadow: 0 0 20px #ccc;
+	overflow: hidden;
+	display: block;
+	border-radius: 20px;
+}
+
+ul.status {
+	width: 300px;
+	margin: 0 auto;
+} 
+
+.box-assinatura ul.status  {
+	width: 100%;
+	margin: 0 auto;
+} 
+
+ul.status li {
+	padding-left: 23px;
+	margin-bottom: 15px;
+	color:#364471;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+ul.status li a {
+	color:#364471;
+	font-size: 15px;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+ul.status li a:hover {
+	color:#4E63A2;
+}
+
+ul.status li.status-ok {
+	background: url(../img/ico-status.png) no-repeat;
+	display: block;
+	min-width: 16px;
+	height: auto;
+}
+
+ul.status li.status-problema {
+	background: url(../img/ico-status.png) no-repeat;
+	display: block;
+	background-position:  0px -105px;
+	min-width: 16px;
+	height: auto;
+}
+
+ul.status li.status-pendente {
+	background: url(../img/ico-status.png) no-repeat;
+	display: block;
+	background-position:  0px -209px;
+	min-width: 16px;
+	height: auto;
+}
+
+ul.status li.status-pendente-disabled {
+	background: url(../img/ico-status.png) no-repeat;
+	display: block;
+	background-position:  0px -209px;
+	min-width: 16px;
+	height: auto;
+	opacity: 0.5;
+}
+
+ul.status li.status-pendente-disabled a {
+	cursor: default!important;
+}
+
+ul.status li.status-atencao {
+	background: url(../img/ico-status.png) no-repeat;
+	display: block;
+	background-position:  0px -314px;
+	min-width: 16px;
+	height: auto;
+}
+
+ul.sub-lista {
+	margin: 0;
+	padding: 0;
+}
+
+ul.sub-lista li {
+	list-style-type: initial;
+	font-size: 13px;
+	font-weight: 400;
+	padding-left: 0px;
+	margin-left: 40px;
+	margin-bottom: 10px;
+	margin-top: -8px;
+}
+
+ul.lista-passos {
+	width: auto;
+	margin: auto;
+}
+
+ul.lista-passos li a, ul.lista-passos li a:hover {
+	color:#333;
+	cursor: default;
+}
+
+.box-resumo button.btn-principal {
+	margin:  20px 0 0 0;
+}
+
+.box-agendamento {
+	background:#E1E8F0 url(../img/bg-box-acompanhamento.png) no-repeat;
+	border:1px solid #CAD0D8;
+	padding: 25px 20px;	
+	padding-left: 110px;
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 35px;
+	margin-bottom: 15px;
+}
+
+.box-agendamento > p {
+	font-size: 14px;
+	color:#333;
+	line-height: 140%;
+	font-weight: 600;
+}
+
+.box-agendamento p.obs {
+	font-size: 12px;
+	color:#344471;
+	font-weight: 700;
+	margin-top: 15px;
+}
+
+.box-agendamento .campos-agendamento {
+	margin-top: 20px;
+}
+
+.box-agendamento .form-control {
+	width: 110px;
+}
+
+.box-agendamento .form-control {
+    background-color: #fff;
+    background-image: none;
+	border:1px solid #ddd;
+    border-radius: 0px;
+    box-shadow: 0;
+    color: #999;
+    display: block;
+    font-size: 13px;
+    height: 35px;
+    line-height: 35px;
+    padding: 6px 12px;
+    transition: none;
+    width: 100%;
+}
+
+.box-agendamento .form-control:focus {
+    border-color: #ccc;
+    box-shadow: none;
+    outline: 0 none;
+	color:#555;
+}
+
+#box-ligacao {
+	background: #E1E8F0;
+	border:1px solid #CAD0D8;
+	padding: 15px;
+	max-width: 540px;
+	margin: 0 auto;
+	margin-top: 25px;
+}
+
+#box-ligacao p {
+	font-size: 13px;
+	color:#333;
+	font-weight: 600;
+	margin-bottom: 15px;
+	line-height: 140%;
+}
+
+#box-ligacao p.small {
+	font-weight: 700;
+	color:#344471;
+	font-size: 12px;
+	margin-top: 15px;
+	margin-bottom: 0;
+}
+
+.campos #box-ligacao p {
+	margin-bottom: 0;
+}
+
+.campos #box-ligacao p.small {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.campos p.ml-20 {
+	margin-top: -10px;
+	font-size: 13px;
+}
+
+.tab-pagamento .tab-dados {
+	text-align: right;
+	font-size: 13px;
+	font-weight: 600;
+	padding-right: 12px;
+	text-transform: uppercase;
+}
+
+.tab-pagamento .tab-info {
+	text-align: left;
+	font-size: 16px;
+	font-weight: 600;
+	padding-left:12px;
+}
+
+.tab-pagamento .valor-final {
+	font-size: 18px;
+	font-weight: 700;	
+	text-transform: uppercase;
+}
+
+.tab-pagamento .valor-final {
+	border-top: 1px solid #C5C5C5;
+	padding-left:12px;
+	padding-right:12px;
+}
+
+.tab-pagamento td {
+	padding: 8px 0;
+}
+
+.tab-pagamento td.valor-final  {
+	padding: 12px;
+}
+
+/******************************************************/
+
+/* 1.B Conteúdo assinatura digital */
+
+#area-assinatura {}
+
+.bg-textura {
+	background: url(../img/bg-textura.png) no-repeat bottom center;
+	width: 100%;
+	min-height: 400px;
+	display: block;
+}
+
+#area-assinatura .box-assinatura {
+	background: #fff;
+	padding: 30px 25px;
+	box-shadow: 0 0 10px #aaa;
+	overflow: hidden;
+	display: block;
+	margin: 70px 0;
+}
+
+#area-assinatura .box-assinatura p {
+	line-height: 140%;
+}
+
+.box-assinatura .conteudo-aceite {
+	margin: 0 auto;
+	width: 100%;
+	border:1px solid #E8E8E8;
+	box-shadow: 0 0 5px #ddd;
+	padding: 15px 0 15px 15px;
+	overflow-y: scroll;
+	height: 500px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.box-assinatura .conteudo-aceite p {
+	font-size: 12px;
+	width: 96%;
+	line-height: 150%;
+	padding-bottom: 10px;
+}
+
+.box-assinatura .checkbox label {
+	font-size: 12px;
+	line-height: 190%;
+}
+
+.box-assinatura .btn-principal {
+	margin: 15px 0 30px 0;
+	padding: 0 100px;
+}
+
+.box-assinatura .outros-proponentes h4 {
+	font-size: 24px;
+	font-weight: 300;
+	color:#202020;
+	border-bottom:  1px solid #ccc;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+
+.box-assinatura .outros-proponentes .nome {
+	font-weight: 700;
+	font-size: 16px;
+	color:#464646;
+	margin-bottom: 8px;
+}
+
+.box-assinatura .outros-proponentes .status-ok {
+	background: url(../img/ico-status.png) no-repeat;
+	display: block;
+	min-width: 16px;
+	height: 18px;
+	padding-left: 20px;
+	font-weight: 700;
+	color:#009B4E;
+	font-size: 15px;
+}
+
+.area-assinatura-proponentes {
+	width: 100%;
+	display: block;
+	margin-bottom: 15px;
+	overflow: hidden;
+}
+
+.area-assinatura-proponentes .proponentes-assinar {
+	float: left;
+}
+
+.area-assinatura-proponentes .proponentes-assinar p {
+	font-size: 15px;
+	color:#353535;
+	font-weight: 600;
+	margin-bottom: 0;
+	padding-bottom: 10px;
+}
+
+.area-assinatura-proponentes button {
+	float: right;
+}
+
+/******************************************************/
+
+/* 1.C Chat */
+
+#chat-destaque {}
+
+#chat-destaque .box-chat {
+	background: url(../img/bg-chat.png) no-repeat;
+	display: block;
+	width: 657px;
+	height: 286px;
+	margin: 0 auto;
+	margin-top: 40px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+#chat-destaque .box-chat h5 {
+	background: #3C4E80;
+	padding: 20px;
+	font-size: 28px;
+	font-weight: 700;
+	color:#F4DC32;
+	display: inline-block;
+	margin: 20px 0;
+	box-shadow: 5px 5px 0 #E5E5E5;
+}
+
+#chat-destaque .box-chat p {
+	color: #454545;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 130%;
+	width: 510px;
+	margin: 0 0 30px 25px;
+}
+
+#chat-destaque .box-chat ul {
+	width: 450px;
+	margin: 0 auto;
+}
+
+#chat-destaque .box-chat ul li {
+	display: inline;
+	padding: 0 20px;
+}
+
+/******************************************************/
+
+/* 1.D Documentos */
+
+.listagem-documentos {
+	margin: 0 30px 30px 30px;
+}
+
+.listagem-documentos h6 {
+	font-size: 24px;
+}
+
+.listagem-documentos p {
+	color:#335497;
+	font-size: 15px;
+	font-weight: 600;
+	padding-bottom: 5px;
+}
+
+.listagem-documentos p i  {
+	padding-right: 5px;
+	color:#335497;
+	font-size: 18px;
+}
+
+.listagem-documentos .link-documento {
+	margin: 2px 0 20px 25px;
+}
+
+.listagem-documentos .link-documento:last-child {
+	margin: 2px 0 0px 25px;
+}
+
+.listagem-documentos .link-documento i {
+	margin-left: 4px;
+}
+
+.listagem-documentos .link-documento a {
+	color:#545454;
+	text-decoration: underline;
+}
+
+.listagem-documentos .link-documento a:hover {
+	text-decoration: none;
+}
+
+/******************************************************/
+
+/* 1.E Termo de aceite e box de contestação */
+
+#termo-aceite p {
+	margin-bottom: 12px;
+	line-height: 130%;
+}
+
+#termo-aceite .checkbox-aceite {
+	width: 500px;
+	margin: 0 auto;
+	font-size: 12px;
+	margin-top: 30px;
+}
+
+#termo-aceite .checkbox-aceite label {
+		line-height: 175%;
+}
+
+#termo-aceite .box-botoes {
+	margin: 30px 0;
+}
+
+#termo-aceite .box-botoes button {
+	margin: 0 10px!important;
+}
+
+.envio-contestacao {
+	max-width: 380px;
+	margin: 0 auto;
+	margin-top: 60px;
+}
+
+#termo-aceite p.nome-doc {
+	color: #395898;
+	font-weight: 600;
+	font-size: 18px;
+	text-align: center;
+}
+
+.envio-contestacao label {
+    color: #555555;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.envio-contestacao button {
+	margin: 0 10px;
+}
+
+.envio-contestacao .btn-file {
+	margin-top: 15px;
+}
+
+#termo-aceite .box-resumo {
+	margin-bottom: 50px;
+}
+
+#conteudo-contestacao {
+	padding: 0 25px;
+}
+
+#conteudo-contestacao p.texto-data {
+	font-style: italic;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+#conteudo-contestacao .box-enviado {
+	background: #F3F5F7;
+	margin: 25px 0;
+	padding: 15px;
+}
+
+#conteudo-contestacao .box-enviado p.nome-doc {
+	color: #395898;
+	font-weight: 600;
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+
+#conteudo-contestacao .box-enviado .input-icone {
+	float: left;
+	width: 350px;
+}
+
+.box-enviado blockquote p {
+	font-size: 14px;
+	font-weight: 400;
+	margin-top: 25px;
+	margin-left: 5px;
+}
+
+.box-contestado {
+	margin-bottom: 50px;
+}
+
+.box-contestado p {
+	line-height: 130%;
+	font-size: 14px;
+	margin-bottom: 15px;
+}
+
+#termo-aceite-imovel .envio-contestacao {
+	max-width: 100%;
+	margin:0 auto;
+	margin-top: 20px;
+	margin-left: 5px;
+}
+
+#termo-aceite-imovel .envio-contestacao button {
+    margin: 0 0px;
+	margin-right: 20px;
+}
+
+.campos #conteudo-contestacao .box-enviado {
+    margin: 0px 0 20px 0!important;
+    padding: 10px!important;
+	display: block;
+	overflow: hidden;
+}
+
+.campos #conteudo-contestacao .box-enviado blockquote p {
+	margin-top: 10px!important;
+}
+
+.campos .box-contestado {
+	margin-bottom: 30px;
+}
+
+.campos #termo-aceite .checkbox-aceite {
+    width: 100%;
+	margin-top: 10px;
+}
+
+.campos #termo-aceite p.valor-inicial {
+	font-size: 13px;
+	margin-bottom: 0;
+}
+
+.campos #termo-aceite p.valor-final {
+	font-size: 16px;
+	margin-bottom: 0;
+	font-weight: 600;
+}
+
+.campos #termo-aceite .box-resumo {
+	padding: 30px 25px 10px 25px;
+	margin-bottom: 20px;
+}
+
+.campos #conteudo-contestacao {
+    padding: 0 0px;
+	margin-top: 25px;
+}
+
+.label-analise {
+	background: #EBEDF2;
+	padding: 10px 15px 10px 10px;
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;
+	display: inline-block;
+}
+
+.label-analise span.texto-aguardando {color:#A2720F;}
+.label-analise span.texto-bcredi {color:#3B4D7F;}
+.label-analise span.texto-alerta {color:#CA1717;}
+.label-analise span.texto-aprovado {color:#7BB937;}
+
+.label-analise button {
+	margin-right: 10px;
+}
+
+.campos .alert {
+	padding-bottom: 0;
+	width: 95%;
+	padding-top: 15px;
+}
+
+.campos p.alerta-documento {
+	font-weight: 600;
+	margin-bottom: 0!important;
+}
+
+.alert button i {
+    font-size: 12px;
+    padding-right: 0px;
+}
+
+.alert .label-analise {
+	margin-bottom: 15px;
+}
+
+/******************************************************/
+
+/*** 2. PÁGINA DE MENSAGEM ***/
+
+.bloco-mensagem {
+	border-bottom: 1px solid #eee;
+	display: block;
+	overflow: hidden;
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+}
+
+.mensagens p {
+	font-size: 13px;
+	color:#212121;
+}
+
+.bloco-mensagem p.pergunta {
+	line-height: 140%;	
+}
+
+.bloco-mensagem p.pergunta i  {
+	padding-right: 7px;
+	color:#335497;
+	font-size: 18px;
+}
+
+.bloco-mensagem p.sem-resposta {
+	color:#888;
+	font-style: italic;
+	line-height: 140%;	
+}
+
+.mensagens p.sem-resposta, .mensagens p.resposta {
+	margin-left: 20px;
+}
+
+.mensagens p .ico-mensagem {
+	background: url(../img/icon-mensagem.png) no-repeat;
+	width: 20px;
+	height: 20px;
+	display: block;
+	margin-right: 10px;
+	float: left;
+}
+
+.mensagens p span.info-resposta {
+	font-style: italic;
+	font-size: 12px;
+	color:#555;
+}
+
+/******************************************************/
+
+/*** 3. PÁGINA DE FAQ ***/
+
+.panel-default > .panel-heading {
+	border:none;
+	padding: 10px 0;
+	background: #fff;
+}
+
+.panel {
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.panel-default {
+    border-color: transparent;
+}
+
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border: none;
+}
+
+.panel-heading {
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    padding: 10px 15px;
+}
+
+.panel-body {
+    padding: 15px 0 0 0;
+}
+
+.faq .panel-heading .accordion-toggle:after {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "\f106";
+	float: right;
+	color:#7a7a7a;
+}
+
+.faq .panel-heading .accordion-toggle.collapsed:after {
+	color:#ccc;
+	content: "\f107";
+}
+
+.faq h4.panel-title {
+	font-size: 24px;
+	font-weight: 300;
+	color: #212121;
+	line-height: 140%;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+	display: block;
+	text-decoration: none;
+}
+
+.faq h4.panel-title a {text-decoration: none;}
+
+.faq h4.panel-title a:hover {
+	color:#333;
+}
+
+.faq h4.panel-title:hover {border-bottom: 1px solid #aaa;}
+
+.faq .panel-group {
+    margin-bottom: 0px;
+}
+
+.faq p {
+	font-size: 13px;
+	line-height: 140%;
+	color:#212121;
+}
+
+.faq p.pergunta {
+	color:#335497;
+	font-size: 15px;
+	font-weight: 600;
+	padding-bottom: 5px;
+}
+
+.faq p.pergunta i  {
+	padding-right: 5px;
+	color:#335497;
+	font-size: 18px;
+}
+
+.faq p.resposta {
+	padding-bottom: 15px;
+}
+
+/******************************************************/
+
+/*** 4. BLOCO PADRÃO DE CONTEÚDO ***/
+
+/* 4.A Geral */
+
+.botao-box-conteudo .link {
+	float: left;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 40px;
+}
+
+.botao-box-conteudo button {float: right;}
+
+.box-conteudo .icone-duvida  {
+	float: left;
+	color:#255DA6;
+	font-size: 30px;
+	margin-top: 18px;
+	margin-left: 20px;
+}
+
+.box-conteudo .disabled {
+	opacity: 0.4;
+}
+
+/* 4.B Renda */
+
+.bloco-instrucoes {
+	margin-bottom: 15px;
+}
+
+.bloco-instrucoes .panel-heading {
+	background: #3A5898;
+	height: 40px;
+	padding: 0 10px;
+}
+
+.bloco-instrucoes .panel-heading i {
+	font-size: 18px;
+	margin-right: 10px;
+}
+
+.bloco-instrucoes .panel-heading .accordion-toggle:after {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	content: "\f106";
+	float: right;
+	color:#efefef;
+	font-size: 30px;
+	line-height: 40px;
+}
+
+.bloco-instrucoes .panel-heading .accordion-toggle.collapsed:after {
+	color:#fff;
+	content: "\f107";
+}
+
+.bloco-instrucoes h4.panel-title {
+	font-size: 18px;
+	color:#fff;
+	font-weight: 300;
+	line-height: 40px;
+	padding-bottom: 5px;
+	display: block;
+	text-decoration: none;
+}
+
+.bloco-instrucoes h4.panel-title a {text-decoration: none;}
+
+.bloco-instrucoes h4.panel-title a:hover {
+	color:#fff;
+}
+
+.bloco-instrucoes .panel-body {
+	border: 1px solid #3A5898!important;
+	padding: 15px 15px 0 15px;
+}
+
+.bloco-instrucoes .panel-body p {
+	font-size: 13px;
+	color:#333;
+	line-height: 140%;
+}
+
+.linha-renda {
+	margin-top: 0!important;
+	margin-bottom: 0!important;
+	padding: 0!important;
+	display: block;
+	width: 100%;
+}
+
+.linha-renda .checkbox {
+    margin-top: 0px;
+	margin-bottom: 0;
+}
+
+.campos .linha-renda .form-control {
+    margin-bottom: 5px;
+}
+
+.linha-divisao {
+	background: #888;
+	height: 1px;
+	display: block;
+	overflow: hidden;
+	margin: 30px 10px 20px 10px;
+}
+
+.btn-add-renda {
+	margin:15px;
+}
+
+#divRadios {}
+
+#divRendas h5 {
+    color: #656565;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 10px 0 10px 0px;
+}
+
+#divRendas .campos {
+	padding:0;
+}
+
+button#btnExcluirRenda {
+	margin-top:-10px;
+}
+
+.bloco-comprova-renda {
+
+}
+
+/* 4.C Documentos */
+
+.documento-instrucao i {
+	margin-left: 5px;
+	color:#19345F;
+}
+
+.file-input .file-caption-main {
+	margin-top: -10px!important;
+}
+
+.file-input .file-caption-main .form-control {
+	margin-top: 15px!important;
+}
+
+/* 4.D Cartórios */
+
+.pendencias-cartorio {
+	margin-left:10px;
+}
+
+.pendencias-cartorio p {
+	font-weight:600;
+}
+
+.pendencias-cartorio .input-icone {
+	float:left;
+	width:50%;
+}
+
+.pendencias-cartorio button {
+	float:left;
+}
+
+
+/***************************************************/
+
+
+
+
+

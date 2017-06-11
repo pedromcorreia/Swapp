@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swap.Web", "Bcredi.Web\Swap.Web.csproj", "{619B7FA9-116B-4740-8B91-1652F524112D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swap.Web.Tests", "Bcredi.Web.Tests\Swap.Web.Tests.csproj", "{EDF81D90-9971-4DE2-B4A8-D9460CB1ACF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swap.Dao", "Bcredi.DAO\Swap.Dao.csproj", "{A0447FA3-2F58-4822-B676-F27DA922B0D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swap.Utils", "Bcredi.Utils\Swap.Utils.csproj", "{7000A46F-5725-4AF8-97B4-F7B857211B0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{619B7FA9-116B-4740-8B91-1652F524112D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{619B7FA9-116B-4740-8B91-1652F524112D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{619B7FA9-116B-4740-8B91-1652F524112D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{619B7FA9-116B-4740-8B91-1652F524112D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDF81D90-9971-4DE2-B4A8-D9460CB1ACF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF81D90-9971-4DE2-B4A8-D9460CB1ACF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF81D90-9971-4DE2-B4A8-D9460CB1ACF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF81D90-9971-4DE2-B4A8-D9460CB1ACF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0447FA3-2F58-4822-B676-F27DA922B0D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0447FA3-2F58-4822-B676-F27DA922B0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0447FA3-2F58-4822-B676-F27DA922B0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0447FA3-2F58-4822-B676-F27DA922B0D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7000A46F-5725-4AF8-97B4-F7B857211B0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7000A46F-5725-4AF8-97B4-F7B857211B0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7000A46F-5725-4AF8-97B4-F7B857211B0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7000A46F-5725-4AF8-97B4-F7B857211B0C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal

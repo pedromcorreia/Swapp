@@ -1,0 +1,9 @@
+C:\Users\pedro\OneDrive\Documentos\Bcredi\Swap\Bcredi.Utils\bin\Debug\Bcredi.Utils.dll
+C:\Users\pedro\OneDrive\Documentos\Bcredi\Swap\Bcredi.Utils\bin\Debug\Bcredi.Utils.pdb
+C:\Users\pedro\OneDrive\Documentos\Bcredi\Swap\Bcredi.Utils\obj\Debug\Swap.Utils.csprojResolveAssemblyReference.cache
+C:\Users\pedro\OneDrive\Documentos\Bcredi\Swap\Bcredi.Utils\obj\Debug\Bcredi.Utils.dll
+C:\Users\pedro\OneDrive\Documentos\Bcredi\Swap\Bcredi.Utils\obj\Debug\Bcredi.Utils.pdb
+C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp\Bcredi.Utils\bin\Debug\Swapp.Utils.dll
+C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp\Bcredi.Utils\bin\Debug\Swapp.Utils.pdb
+C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp\Bcredi.Utils\obj\Debug\Swapp.Utils.dll
+C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp\Bcredi.Utils\obj\Debug\Swapp.Utils.pdb

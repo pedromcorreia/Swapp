@@ -1,0 +1,163 @@
+﻿@model Bcredi.DAO.Models.Usuario
+@{
+    Layout = "~/Views/Shared/_Layout_LoginCadastro.cshtml";
+    ViewBag.Title = "Faça seu cadastro na Bcredi";
+
+
+    ViewBag.txtUsuario = "Pedro Correia";
+    ViewBag.txtCpf = "099453093962";
+    ViewBag.txtTelefone = "41996362448";
+    ViewBag.txtDataNascimento = "08/11/1994";
+    ViewBag.txtCep = "82520490";
+    ViewBag.txtEmail = "pedmcor@gmail.com";
+    ViewBag.txtPassword = "123456";
+    ViewBag.txtConfirmarPassword = "123456";
+}
+
+<main>
+    <section id="cadastro">
+        <div class="container">
+
+            @using (Html.BeginForm("CriarUsuario", "Usuario", FormMethod.Post, new { @class = "fm-iniciar", role = "form" }))
+            {
+                if (ViewBag.MensagemUsuarioCriado != null)
+                {
+                    <div class="alert alert-success" role="alert">
+                        @ViewBag.MensagemUsuarioCriado
+                    </div>
+                }
+                if (ViewBag.Emailenviadocomsucesso != null)
+                {
+                    <div class="alert alert-warning" role="alert">
+                        @ViewBag.Emailenviadocomsucesso
+                    </div>
+                }
+
+                <div class="box-principal">
+
+                    <center><h1><img src="../Content/img/acesso/logo.png" alt="Bcredi"></h1></center>
+                    <p class="text-center inicial mb-30">Faça o cadastro em nosso site. É rápido e fácil.</p>
+                    <form>
+
+                        @if (ViewBag.mensagemInconsistencia != null)
+                        {
+                            <div class="alert alert-warning fade in alert-dismissable">
+                                <strong>Atenção!</strong> Existem inconsistências ou campos não preenchidos.
+                                @ViewBag.mensagemInconsistencia
+                            </div>
+                        }
+                        <fieldset>
+
+                            <div class="form-group">
+                                <label>Nome completo:<span class="obrigatorio" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Campo obrigatório">*</span></label>
+                                <input type="text" class="form-control foco-default" autocomplete="off" id="txtUsuario" name="txtUsuario" value="@ViewBag.txtUsuario" maxlength="80">
+                                <small class="text-muted"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Atenção: digite seu nome igual ao que consta em seu CPF.</small>
+                            </div>
+                            <div class="form-group">
+                                <label>CPF:<span class="obrigatorio" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Campo obrigatório">*</span></label>
+                                <input type="text" class="form-control cpf cpf_cnpj" autocomplete="off" id="txtCpf" name="txtCpf" value="@ViewBag.txtCpf" maxlength="14">
+                            </div>
+                            <div class="form-group">
+                                <label>Telefone celular:<span class="obrigatorio" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Campo obrigatório">*</span></label>
+                                <input type="text" class="form-control telefone_9dig" autocomplete="off" id="txtTelefone" name="txtTelefone" value="@ViewBag.txtTelefone" maxlength="11">
+                            </div>
+                            <div class="form-group">
+                                <label>Data de nascimento:<span class="obrigatorio" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Campo obrigatório">*</span></label>
+                                @if (@Model.DataAniversario == new DateTime())
+                                {
+                                    <input type="text" class="form-control dataNascimento calendario" autocomplete="off" id="txtDataNascimento" name="txtDataNascimento" value="@ViewBag.txtDataNascimento" maxlength="10">
+                                }
+                                else
+                                {
+
+                                    <input type="text" class="form-control dataNascimento calendario" autocomplete="off" id="txtDataNascimento" name="txtDataNascimento" value="@Model.DataAniversario" maxlength="10">
+                                }
+                                <small class="text-muted"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Atenção: siga o modelo dd/mm/aaaa. </small>
+                            </div>
+
+                            <div class="form-group">
+                                <label>CEP:<span class="obrigatorio" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Campo obrigatório">*</span></label>
+                                <input type="text" class="form-control cep" autocomplete="off" id="txtCep" name="txtCep" value="@ViewBag.txtCep" maxlength="9">
+                            </div>
+                            <div class="alert alert-danger hide" id="divEmailExistente" name="divEmailExistente">
+                                <span>Atenção</span> Esse e-mail já existe!
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail:<span class="obrigatorio" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Campo obrigatório">*</span></label>
+                                <input type="text" class="form-control email" autocomplete="off" id="txtEmail" name="txtEmail" value="@ViewBag.txtEmail" maxlength="80">
+                                <small class="text-muted"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Atenção: seu e-mail será o login no nosso sistema.</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Senha:<span class="obrigatorio" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Campo obrigatório">*</span></label>
+                                <input type="password" class="form-control password" autocomplete="off" id="txtPassword" name="txtPassword" value="@ViewBag.txtPassword" maxlength="80">
+                                <small class="text-muted"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Atenção: sua senha deve conter no mínimo 6 caracteres.</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirmar Senha:<span class="obrigatorio" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Campo obrigatório">*</span></label>
+                                <input type="password" class="form-control password" autocomplete="off" id="txtPasswordConfirm" name="txtPasswordConfirm" value="@ViewBag.txtConfirmarPassword" maxlength="80">
+                                <small class="text-muted hide" id="divConfirmarSenha"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Atenção: Senhas não conferem.</small>
+                            </div>
+                            <center>
+                                <div class="botao">
+                                    <button type="button" id="btncriar" name="btncriar" class="btn btn-principal btn-amarelo">Cadastrar</button> <span class="">ou</span> <a href="../Login/Login" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Para fazer o login no nosso sistema você precisa ter feito uma Simulação e um Cadastro.">Fazer login</a>
+                                </div>
+                            </center>
+                        </fieldset>
+                    </form>
+                </div>
+            }
+        </div>
+    </section>
+</main>
+
+<script type="text/javascript">
+
+    function FunctionVerificarSenha() {
+
+        if (document.getElementById("txtPassword").value != document.getElementById("txtPasswordConfirm").value) {
+            $("#divConfirmarSenha").removeClass('hide');
+            return false;
+        }
+        else {
+            $("#divConfirmarSenha").addClass('hide');
+            return true;
+        }
+    };
+    $(document).ready(function () {
+        $("#btncriar").click(function () {
+            if (FunctionVerificarSenha()) {
+                $("form").submit();
+            }
+            else {
+            }
+        });
+
+        $("body").delegate("#txtEmail", "change", function () {
+
+            var email = $("#txtEmail").val();
+
+            $.ajax({
+                url: "/Usuario/EmailExiste",
+                type: "POST",
+                async: false,
+                dataType: "html",
+                data: {
+                    emailJson: email
+                },
+                success: function (dados) {
+                    var result = $.parseJSON(dados);
+                    if (result.Data) {
+                        $("#divEmailExistente").removeClass("hide");
+                    }
+                    else {
+                        $("#divEmailExistente").addClass("hide");
+                    }
+                },
+                error: function (result) {
+                }
+            })
+            event.preventDefault();
+        });
+        reloadAllValidation();
+    });
+</script>

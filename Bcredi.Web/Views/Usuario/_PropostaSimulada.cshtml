@@ -1,0 +1,121 @@
+﻿<link href="~/Content/css/comum.css" rel="stylesheet" /> 
+@*<link href="~/Content/css/sistema.css" rel="stylesheet" />*@
+@{
+    Bcredi.DAO.Models.Simulacao simulacao = (Bcredi.DAO.Models.Simulacao)@ViewData["Simulacao"];
+}
+
+@if (simulacao != null)
+{
+  
+
+@Html.Hidden("hdnDetalheTipoImovelSigla", @simulacao.tipoImovelSigla)
+@Html.Hidden("hdnDetalheTipoImovel", @simulacao.tipoImovel)
+@Html.Hidden("hdnDetalheIdade", @simulacao.idade)
+@Html.Hidden("hdnDetalheTipoCorrecao", @simulacao.tipoCorrecao)
+@Html.Hidden("hdnDetalheValorEmprestimo", @simulacao.valorCredito)
+@Html.Hidden("hdnDetalheTaxaManutencaoMensal", @simulacao.taxaManutencaoMensal)
+@Html.Hidden("hdnDetalheValorImovel", @simulacao.valorImovel)
+@Html.Hidden("hdnDetalheTaxaEfetivaJuros", @simulacao.taxaEfetivaJuros)
+@Html.Hidden("hdnDetalheTipoCredito", @simulacao.tipoCredito)
+@Html.Hidden("hdnDetalheValorCustoEfetivoTotalAnual", @simulacao.valorCustoEfetivoTotalAnual)
+@Html.Hidden("hdnDetalhePrazo", @simulacao.prazo)
+@Html.Hidden("hdnDetalheValorTotalCustas", @simulacao.valorTotalCustas)
+@Html.Hidden("hdnDetalheValorTotalFinanciamento", @simulacao.valorTotalFinanciamento)
+@Html.Hidden("hdnDetalheValorSeguroMorteInvalidezPermanente", @simulacao.percentualSeguroMorteInvalidez)
+@Html.Hidden("hdnDetalheValorImpostoOperacoesFinanceiras", @simulacao.valorImpostoOperacoesFinanceiras)
+@Html.Hidden("hdnDetalheValorSeguroDanosFisicosImovel", @simulacao.percentualSeguroDanosFisicosImovel)
+@Html.Hidden("hdnDetalheValorPrimeiraParcela", @simulacao.valorPrimeiraParcela)
+@Html.Hidden("hdnDetalheValorUltimaParcela", @simulacao.valorUltimaParcela)
+
+@Html.Hidden("hdnNomePretendente", @simulacao.nome)
+@Html.Hidden("hdnTel_ddd", @simulacao.DDD)
+@Html.Hidden("hdnTel_celular", @simulacao.telefone.Replace("-", ""))
+@Html.Hidden("hdnEmail", @simulacao.email)
+
+@Html.Hidden("hndDetalheTipoPessoa", @simulacao.tipoPessoa)
+@Html.Hidden("hdnDetalheTipoAmortizacao", @simulacao.tipoAmortizacao)
+@Html.Hidden("hdnDetalheUf", @simulacao.uf)
+@Html.Hidden("hdnDetalheParcela", @simulacao.tipoParcela)
+
+<div id="slide-resumo-proposta" class="hidden-xs">
+    <div id="resumo-proposta">
+        <h6>Proposta simulada</h6>
+        <div class="tipo-proposta">Empréstimo com garantia de imóvel</div>
+        <div class="tabela-proposta">
+            <table width="100%" border="0" class="tab-proposta">
+                <tbody>
+                    <tr class="borda">
+                        <td class="info">Valor do crédito:</td>
+                        <td class="dados">@String.Format("{0:C}", @simulacao.valorCredito)</td>
+                    </tr>
+                    <tr class="borda">
+                        <td class="info">Valor do imóvel:</td>
+                        <td class="dados">@String.Format("{0:C}", @simulacao.valorImovel)</td>
+                    </tr>
+                    <tr class="borda">
+                        <td class="info">Tipo de crédito:</td>
+                        <td class="dados">@simulacao.tipoCredito</td>
+                    </tr>
+                    <tr class="borda">
+                        <td class="info">Prazo:</td>
+                        <td class="dados">@simulacao.prazo MESES</td>
+                    </tr>
+                    <tr class="borda">
+                        <td class="info">Valor total do financiamento:</td>
+                        <td class="dados">@String.Format("{0:C}", @simulacao.valorTotalFinanciamento)</td>
+                    </tr>
+                    <tr class="borda">
+                        <td class="info">Primeira parcela:</td>
+                        <td class="dados">@String.Format("{0:C}", @simulacao.valorPrimeiraParcela)</td>
+                    </tr>
+                    @*
+                    //Comentado enquanto nao recuperamos os dados do parcelamento
+                    <tr class="borda">
+                        <td class="info">Última parcela:</td>
+                        <td class="dados">R$ 1.574,31 - nao tem no simulador</td>
+                    </tr>
+                    *@
+                    <tr class="borda">
+                        <td class="info">Imposto sobre operações financeiras:</td>
+                        <td class="dados">@simulacao.iof%</td>
+                    </tr>
+                    <tr class="borda">
+                        <td class="info">Taxa de manutenção mensal:</td>
+                        <td class="dados">@String.Format("{0:C}", @simulacao.taxaManutencaoMensal)</td>
+                    </tr>
+                    <tr class="borda">
+                        <td class="info">Taxa efetiva de juros:</td>
+                        <td class="dados">@simulacao.taxaEfetivaJuros% a.m. + IGPM </td>
+                    </tr>
+                    <tr class="borda">
+                        <td class="info">Custo efetivo total anual:</td>
+                        <td class="dados"> @(simulacao.valorCustoEfetivoTotalAnual / 100)% a.a.</td>
+                    </tr>
+                    <tr class="borda">
+                        <td class="info">Total de custas:</td>
+                        <td class="dados">@String.Format("{0:C}", @simulacao.valorTotalCustas)</td>
+                    </tr>
+                    <tr class="borda">
+                        <td class="info">Seguro de morte ou invalidez permanente:</td>
+                        <td class="dados"> @(simulacao.percentualSeguroMorteInvalidez / 1000) %</td>
+                    </tr>
+                    <tr class="borda">
+                        <td class="info">Seguro de danos físico do imóvel:</td>
+                        <td class="dados">@( simulacao.percentualSeguroDanosFisicosImovel / 1000)%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--
+            <div class="pull-right">
+                <button class="btn btn-medio btn-cinza">Fechar</button>
+                <button class="btn btn-medio btn-amarelo">Nova Simulação</button>
+            </div>
+            -->
+        </div>
+    </div>
+    <div id="slide-resumo-proposta-botao">
+        <img src="../../Content/img/btn-ver-proposta.png">
+    </div>
+</div>
+
+    }

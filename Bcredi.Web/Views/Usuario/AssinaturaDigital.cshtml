@@ -1,0 +1,555 @@
+﻿@model Bcredi.DAO.Models.Usuario
+@{
+    ViewBag.Title = "AssinaturaDigital";
+    Layout = "~/Views/Shared/_Layout_Bcredi.cshtml";
+    @Scripts.Render("~/bundles/clicksign")
+
+}
+<form id="frmAssinaturaDigital" name="frmAssinaturaDigital">
+    <main>
+        <div class="panel panel-default visible-xs box-resumo-proposta">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#div-proposta">
+                        Detalhes de sua proposta
+                    </a>
+                </h4>
+            </div>
+
+        </div>
+
+        @{
+            ViewData["Simulacao"] = @ViewBag.Simulacao;
+        }
+        @Html.Partial("_PropostaSimulada", ViewData);
+
+        <section id="navegacao-passos">
+            <div class="container">
+            </div>
+        </section>
+
+        <section id="conteudo">
+            <div class="container">
+                <div class="box-principal">
+				
+                    <div id="divBemVindo" name="divBemVindo">
+					<div class="resumo-info hide">
+						<h1>Bem-vindo à área logada da Bcredi</h1>
+                       
+                        <p>Bem-vindo à área logada da Bcredi, para seguir com o seu processo é necessário que você assine digitalmente o documento abaixo.</p>   
+
+						</div>	
+                    </div>				
+
+                    <div class="resumo-info hide">
+                        <h1>Vamos começar o seu processo de crédito da Bcredi?</h1>
+                        <p>Aqui você deverá enviar as informações sobre quem está contratando o crédito(proponentes), e todas as pessoas que fizerem parte da composição de renda, além de informações sobre o imóvel que você usará como garantia para aquisição do crédito.</p>
+                        <p>Existe uma sequência para envio das informações, mas você pode completar os dados na ordem que desejar.</p>
+                        <p>No box abaixo você encontra o status do seu processo.</p>
+                    </div>
+
+                    <div id="area-resumo-proposta" class="bg-grafismo hide">
+                        <div class="row">
+                            <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+                                <div class="box-resumo">
+                                    <h2>Passo a passo para envio<strong> da sua proposta</strong></h2>
+                                    <ul class="status" style="width:210px;">
+                                        @*<li class="status-pendente"><a href="/DadosPessoais/DadosPessoais/"> Dados pessoais</a></li>
+                                        <li class="status-problema"><a href=""> Comprovação de renda</a></li>
+                                        <li class="status-problema"><a href=""> Informações do imóvel</a></li>
+                                        <li class="status-problema"><a href=""> Envio de documentos</a></li>*@
+
+                                        <li id="liDadosPessoais"><a href="/DadosPessoais/DadosPessoais">Dados pessoais</a></li>
+                                        <li id="liComprovacaoRenda"><a href="/Renda/Renda">Comprovação de renda</a></li>
+                                        <li id="liInformacoesImovel"><a href="/Imovel/Imovel">Informações do imóvel</a></li>
+                                        <li id="liEnvioDocumentos"><a href="/Documentos/Documentos">Envio de documentos</a></li>
+                                    </ul>
+
+                                    <center>
+                                        <center><button disabled class="btn btn-principal btn-amarelo">Enviar ficha proposta</button></center>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="area-assinatura" class="bg-textura margem-reset">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+
+                                <div class="box-assinatura" id="assinatura">
+                                    <h3 class="text-center">Assinatura digital</h3>
+
+                                    <p class="text-center">Sua assinatura digital é importante para que você autorize a análise das suas informações.</p>
+                                    <center>
+                                        <button id="btnAssinarDigitalmente" name="btnAssinarDigitalmente" class="btn btn-principal btn-amarelo" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="bottom" data-original-title="Assinar digitalmente o documento" type="button">Assinar Digitalmente</button>
+                                    </center>
+                                    <div class="conteudo-aceite hide" id="divClickSign" name="divClickSign">
+                                        <div id='signature-box'></div>
+                                    </div>
+                                    @using (Html.BeginForm("AssinaturaDigital", "Usuario", FormMethod.Post, new { @class = "fm-iniciar", role = "form" }))
+                                    {
+                                        <center>
+                                            <!--
+                                        <div class="checkbox">
+                                            @*@Html.CheckBox(m => m.IndicadorAssinatura, new { @class = "control-label" })*@
+                                            <label><input type="checkbox" id="btnCheckTermos" name="btnCheckTermos" checked>Li e aceito os termos de uso.</label>
+                                        </div>
+
+                                        <button class="btn btn-principal btn-verde disabled hide" id="btnAssinado" name="btnAssinado">Assinado!</button>
+                                        <button class="btn btn-principal btn-amarelo disabled" id="btnAssinar" name="btnAssinar">Assinar</button>
+                                         -->
+
+                                        </center>
+                                    }
+
+
+                                    <h6>Signatários</h6>
+                                    <div id="divSignatarios" name="divSignatarios">
+
+                                    </div>
+
+                                    <div class="botao-box-conteudo hidden">
+                                        <button id="btnAvancarAposAssinatura" name="btnAvancarAposAssinatura" type="button" class="btn btn-amarelo" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="bottom" data-original-title="Favor assinar digitalmente o documento para avançar.">Avançar</button>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="chat-destaque">
+                        <div class="box-chat">
+                            <h5>Precisando de ajuda?</h5>
+                            <p>O processo é simples e descomplicado, sempre que tiver qualquer dúvida, recorra aos nossos canais de atendimento, chat e FAQ.</p>
+                            <ul class="hidden-xs">
+                                <li><a href="javascript:void($zopim.livechat.window.show())" class="valign-center btnChat tags-ga" data-categoria="header" data-acao="clique"><img src="../../Content/img/ico-chat-g.png" alt="Chat"></a></li>
+                                <li><a href="mailto:contato@bcredi.com.br"><img src="../../Content/img/ico-mensagem-g.png" alt="Mensagem"></a></li>
+                                <li><img src="../../Content/img/ico-fone-g.png" alt="Telefone"></li>
+                            </ul>
+                            <ul class="visible-xs">
+                                <li><a href="javascript:void($zopim.livechat.window.show())" class="valign-center btnChat tags-ga" data-categoria="header" data-acao="clique"><img src="../../Content/img/ico-chat-g.png" alt="Chat"></a></li>
+                                <li><a href="mailto:contato@bcredi.com.br"><img src="../../Content/img/ico-mensagem-g.png" alt="Mensagem"></a></li>
+                                <li><img src="../../Content/img/ico-fone-g.png" alt="Telefone"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="templateSignatarioAssinado" name="templateSignatarioAssinado" class="hide">
+        <div>
+            <p id="txtNomePreponente" name="txtNomePreponente"></p>
+            <ul class="status">
+                <li class="status-ok" id="txtStatus" name="txtStatus"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="templateSignatarioPendente" name="templateSignatarioPendente" class="hide">
+        <div>
+            <p id="txtNomePreponente" name="txtNomePreponente"></p>
+            <ul class="status">
+                <li class="status-pendente" id="txtStatus" name="txtStatus"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="templateRenderizarProponente" name="templateRenderizarProponente">
+    </div>
+
+</form>
+
+
+<script type="text/javascript">
+
+    var divPreponente = $("#divSignatarios");
+
+    var templateSignatarioPendente = $("#templateSignatarioPendente").html();
+    var templateSignatarioAssinado = $("#templateSignatarioAssinado").html();
+
+    //Exibir o nome de todos os usuarios da proposta
+    function showAllUsuariosProposta() {
+
+        $.ajax({
+            url: "/DadosPessoais/DadosPessoaisJSON",
+            type: "GET",
+            async: false,
+            dataType: "json",
+            data: {
+                guidUsuario: '@ViewBag.GuidUsuario'
+            },
+            success: function (result) {
+                var data = result.Data;
+                var dados = $.parseJSON(result.Data);
+
+                if (dados.Conjuge != null){
+                    var Nome = dados.Conjuge.Name;
+    
+                    $("#templateRenderizarProponente").append(templateSignatarioAssinado)
+                    $("#templateRenderizarProponente").find("p#txtNomePreponente").text(Nome);
+                    $("#templateRenderizarProponente").find("li#txtStatus").text("Assinado");
+                    $(divPreponente).append($("#templateRenderizarProponente").html());                                    
+                }
+
+                $.each(dados.UsuariosProponente, function (index, usuarioProponente) {
+
+                    var nomeProponente = usuarioProponente.Nome;
+                    $("#templateRenderizarProponente").append(templateSignatarioAssinado)
+                    $("#templateRenderizarProponente").find("p#txtNomePreponente").text(nomeProponente);
+                    $("#templateRenderizarProponente").find("li#txtStatus").text("Assinado");
+                    $(divPreponente).append($("#templateRenderizarProponente").html());
+
+                    if (usuarioProponente.Conjuge != null) {
+                        var Nome = usuarioProponente.Conjuge.Name;
+
+                        $("#templateRenderizarProponente").append(templateSignatarioAssinado)
+                        $("#templateRenderizarProponente").find("p#txtNomePreponente").text(Nome);
+                        $("#templateRenderizarProponente").find("li#txtStatus").text("Assinado");
+                        $(divPreponente).append($("#templateRenderizarProponente").html());
+                    }
+
+                });
+
+             }//success            
+        });
+    }
+
+    $(document).ready(function () {
+
+        var checkboxes = document.getElementsByTagName('input');
+
+        showAllUsuariosProposta();
+
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type == 'checkbox') {
+                checkboxes[i].checked = false;
+            }
+        };
+
+        $("#btnAssinarDigitalmente").on("click", function () {
+            $("#btnAssinarDigitalmente").addClass('hide');
+            $("#divClickSign").removeClass('hide');
+        });
+
+        var dados = {
+            key: "@ViewBag.chaveDocumento",
+            email: "@ViewBag.EmailSignatario"
+        };
+
+        clicksign.configure({
+            container: "signature-box",
+            key: "@ViewBag.chaveDocumento",
+            //chave gerada do documento
+            protocol: "https",
+            host: "widget.clicksign-demo.com",
+            signer: {
+                //email do signatario
+                email: "@ViewBag.EmailSignatario",
+
+                //nome do signatario
+                display_name: "@ViewBag.display_name",
+
+                //documento do signatario
+                documentation: "@ViewBag.documentation",
+
+                //data de aniversario do signatario
+                birthday: "@ViewBag.birthday"
+
+            },
+            width: 850,
+            height: 1000,
+            callback: function (event) {
+                if (event.data === "signed") {
+                    showLoadingModal();
+
+                    $.ajax({
+                        url: "/Usuario/AssinaturaDigitalJsonResultAssinado",
+                        type: "POST",
+                        dataType: "json",
+                        data:
+                            {
+                                email: "@ViewBag.EmailSignatario",
+                                key: "@ViewBag.chaveDocumento",
+                                guidUsuario: "@ViewBag.guidUsuario"
+                            },
+                        success: function (result) {
+                            if (result.Success) {
+
+                                $("#btnAvancarAposAssinatura").addClass('hide');
+                                $("#btnAssinarDigitalmente").addClass('hide');
+                                $("#divClickSign").removeClass('hide');
+                                $("#linkMinhasInformacoes").attr('href', '/DadosPessoais/DadosPessoais');
+                                $("#divBemVindo").addClass('hide');
+
+                                //exibir a proposta                                
+                                $("div#area-resumo-proposta").removeClass('hide')
+
+                                //exibir o resumo
+                                $(".resumo-info").removeClass('hide')
+
+
+                            } else {
+                                console.log(result.Message);
+                            }
+                        },
+                        error: function (result) {
+                            console.log("Um erro ocorreu ao realizar a tentativa de recuperação a assinatura");
+
+                        }
+                    });
+
+                    return false;
+                }
+            }
+        });
+        callback = function (event) {
+        }
+        showLoadingModal();
+
+        $.ajax({
+            url: "/Usuario/GetInformacoesDocumento",
+            type: "GET",
+            dataType: "json",
+            data:
+                {
+                    keyDocumento: "@ViewBag.chaveDocumento"
+                },
+            success: function (result) {
+                if (result.Success) {
+                    
+                    $.each(result.Data.List.Signatures, function (index, signatario) {
+
+                        var Nome = signatario.Name;
+
+                        var Data = signatario.Signed;
+
+                        if (Data != "/Date(-62135589600000)/") {
+
+                            $("#templateRenderizarProponente").append(templateSignatarioAssinado)
+                            $("#templateRenderizarProponente").find("p#txtNomePreponente").text(Nome);
+                            $("#templateRenderizarProponente").find("li#txtStatus").text("Assinado");
+                            $(divPreponente).append($("#templateRenderizarProponente").html());
+
+                            $("div#divBemVindo").addClass('hide')
+                                                        
+                            $("#linkMinhasInformacoes").attr('href', '/DadosPessoais/DadosPessoais');
+
+                            //exibir a proposta                                
+                            $("div#area-resumo-proposta").removeClass('hide')
+
+                            //exibir o resumo
+                            $(".resumo-info").removeClass('hide')
+
+
+                        }
+                        else {
+                            $("#templateRenderizarProponente").append(templateSignatarioPendente)
+                            $("#templateRenderizarProponente").find("p#txtNomePreponente").text(Nome);
+                            $("#templateRenderizarProponente").find("li#txtStatus").text("Pendente");
+                            $(divPreponente).append($("#templateRenderizarProponente").html());
+                            
+                            $("div#divBemVindo").removeClass('hide')
+
+                            $("#linkMinhasInformacoes").removeAttr('href');                            
+
+                            //exibir a proposta                                
+                            $("div#area-resumo-proposta").addClass('hide')
+
+                            //exibir o resumo
+                            $(".resumo-info").addClass('hide')
+                        }
+
+                        //limpar o template
+                        $("#templateRenderizarProponente").html('');
+
+                    });
+
+                    $("#divSignatario").removeClass('hide');
+
+
+                } else {
+                    console.log(result.Message);
+                }
+            },
+            error: function (result) {
+                console.log("Um erro ocorreu ao realizar a tentativa de recuperação a assinatura");
+
+            }
+        });
+
+        //## Trata o Status do Passo a Passo ####################################################################################################################
+        GetDataDADOS_PESSOAIS();
+        GetDataRENDA();
+        GetDataIMOVEL();
+        GetDataDOCUMENTOS();
+
+        //## Valida o botão de envio caso não tenha nenhum pendente ##
+        if ($(".status > .status-pendente").length == 0) {
+            $(".btn-principal").prop("disabled", false);
+        } else {
+
+            $(".btn-principal").data('tooltip-length', 'xlarge');
+            $(".btn-principal").data('toggle', 'tooltip');
+            $(".btn-principal").data('placement', 'bottom');
+            $(".btn-principal").data('original-title', 'ATENÇÃO. Você precisa preencher todos os dados para fazer o envio da Ficha Proposta. Enquanto houver um ícone de atenção, significa que há pendências a serem preenchidas.');
+            $(".btn-principal").attr('title', 'ATENÇÃO. Você precisa preencher todos os dados para fazer o envio da Ficha Proposta. Enquanto houver um ícome de atenção, significa que há pendências a serem preenchidas.');
+        }
+
+        //## GET IMOVEL #########################################################################################################################################
+        function GetDataIMOVEL() {
+
+            $.ajax({
+                url: "/Imovel/ImovelJSON",
+                type: "GET",
+                async: false,
+                dataType: "json",
+                data: {
+                    email: '@ViewBag.EmailUsuario'
+                },
+                success: function (result) {
+                    var data = result.Data;
+                    var dados = $.parseJSON(result.Data);
+
+                    if (dados.IdImovel != '00000000-0000-0000-0000-000000000000') {
+
+                        $("#liInformacoesImovel").addClass("status-ok");
+                    }
+                    else {
+                        $("#liInformacoesImovel").addClass("status-pendente");
+                    }
+
+                    //anular o submit do ajax
+                    return false;
+                },
+                error: function (result) {
+                    $("#liInformacoesImovel").addClass("status-problema");
+                }
+            })
+        }
+
+        //## GET IMOVEL #########################################################################################################################################
+        function GetDataDADOS_PESSOAIS() {
+
+            $.ajax({
+                url: "/DadosPessoais/DadosPessoaisJSON",
+                type: "GET",
+                async: false,
+                dataType: "json",
+                data: {
+                    guidUsuario: '@ViewBag.GuidUsuario'
+                },
+                success: function (result) {
+                    var data = result.Data;
+                    var dados = $.parseJSON(result.Data);
+
+                    if (dados.Rg != null) {
+                        $("#liDadosPessoais").addClass("status-ok");
+                    }
+                    else {
+                        $("#liDadosPessoais").addClass("status-pendente");
+                    }
+
+                    //anular o submit do ajax
+                    return false;
+                },
+                error: function (result) {
+                    $("#liDadosPessoais").addClass("status-problema");
+                }
+            })
+        }
+
+        //## GET RENDA ##########################################################################################################################################
+        function GetDataRENDA() {
+
+            $.ajax({
+                url: "/Proposta/GetProposta",
+                type: "GET",
+                async: false,
+                dataType: "json",
+                data: {
+                    guidUsuario: '@ViewBag.GuidUsuario'
+                },
+                success: function (result) {
+                    var data = result.Data;
+                    var dados = $.parseJSON(result.Data);
+
+                    if (dados.GuidUsuario != null) {
+
+                        //Inicio da busca da renda do usuario
+                        $.ajax({
+                            url: "/Renda/RendaByUsuarioProposta",
+                            type: "GET",
+                            async: false,
+                            dataType: "json",
+                            data: {
+                                guidUsuario: dados.GuidUsuario
+                            },
+                            success: function (resultRendaByUsuario) {
+                                var data = resultRendaByUsuario.Data;
+                                //Lista de rendas do usuario
+                                var dadosRendaByUsuario = $.parseJSON(data);
+
+                                if (dadosRendaByUsuario.length > 0) {                                    
+                                    $("#liComprovacaoRenda").addClass("status-ok");
+                                } else {
+                                    $("#liComprovacaoRenda").addClass("status-pendente");
+                                }
+
+                                
+                            },
+                            error: function (result) {
+                                $("#liComprovacaoRenda").addClass("status-problema");
+                            }
+                        })
+
+                        $("#liComprovacaoRenda").addClass("status-ok");
+                    }
+                    else {
+                        $("#liComprovacaoRenda").addClass("status-problema");
+                    }
+
+                    //anular o submit do ajax
+                    return false;
+                },
+                error: function (result) {
+                    $("#liComprovacaoRenda").addClass("status-problema");
+                }
+            })
+        }
+
+        //## GET DOCUMENTOS #####################################################################################################################################
+        function GetDataDOCUMENTOS() {
+
+            $.ajax({
+                url: "/Documentos/DocumentosStatusJson",
+                type: "GET",
+                async: false,
+                dataType: "json",
+                data: {
+                    guidUsuario: '@ViewBag.GuidUsuario'
+                },
+                success: function (result) {
+                    var data = result.Data;
+                    //var dados = $.parseJSON(result.Data);
+                    if (data == 0) {
+                        $("#liEnvioDocumentos").addClass("status-pendente");
+                    }
+                    else {
+                        $("#liEnvioDocumentos").addClass("status-ok");
+                    }
+                    return false;
+                },
+                error: function (result) {
+                    $("#liEnvioDocumentos").addClass("status-problema");
+                }
+            })
+
+        }
+    });
+</script>

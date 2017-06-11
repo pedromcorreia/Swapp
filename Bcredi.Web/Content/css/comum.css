@@ -1,0 +1,930 @@
+/****
+
+DATA: 17/02/2017
+VERSAO: 1.0
+CLASSES COMUM
+
+/***************************************************/
+
+/*
+1.  IMPORTACOES DE FONTES
+2.  CLASSES PADROES
+3.  MARGENS
+4.  TEXTOS
+5.  BOTOES
+6.  MENSAGENS
+7.  FORMS
+8.  CONTAGEM FINAL DA PÁGINA
+9. 	BLOCO AJUDA
+10.	BOX MENSAGENS E AVISOS
+11.	ÍCONES NO INPUT
+
+*/
+
+/***************************************************/
+
+/***  1. IMPORTACOES DE CSS E FONTES ***/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+@import url(estrutura.css);
+@import url(paginas.css);
+@import url(tooltip.css);
+
+/***************************************************/
+
+/***  2. CLASSES PADROES ***/
+
+a img { border:none;}
+img { border:none;}
+fieldset { border: none; padding:0; margin:0; }
+h1, h2, h3, h4, h5, h6, p { line-height:100%; margin:0; padding:0; }
+button { border:none; box-shadow:none; outline:none;}
+ul, li { margin:0; padding:0; list-style-type:none;}
+.btn { border-radius: 0; }
+.borda-branca { border:1px solid #fff; }
+.borda-cinza { border:1px solid #888; }
+
+.cursor-link { cursor:pointer; }
+.sem-link {cursor: default;}
+
+small.ajuda-info { font-size: 11px; font-style: italic; display: block; line-height: 120%; }
+
+.obrigatorio { color:darkred; font-weight: 700; }
+.overflow-all {overflow: hidden;}
+
+.linha-div {background: #D7D7D7;width: 100%; display: block; height: 1px; margin: 15px 0;}
+
+.img-comprovante {width:70%; height:auto; cursor:zoom-in;}
+
+.left { float: left;}
+
+/***************************************************/
+
+/***  3. MARGENS ***/
+
+.mr-5 { margin-right: 5px!important;;}
+.mr-7 { margin-right: 7px!important;;}
+.mr-10 { margin-right: 10px!important;}
+.mr-15 { margin-right: 15px!important;}
+
+.ml-5 { margin-left: 5px!important;}
+.ml-7 { margin-left: 7px!important;}
+.ml-10 { margin-left: 10px!important;}
+.ml-15 { margin-left: 15px!important;}
+.ml-20 { margin-left: 20px!important;}
+.ml-25 { margin-left: 25px!important;}
+.ml-30 { margin-left: 30px!important;}
+
+.mt-5 { margin-top: 5px!important;;}
+.mt-10 { margin-top: 10px!important;}
+.mt-15 { margin-top: 15px!important;}
+.mt-20 { margin-top: 20px!important;}
+.mt-23 { margin-top: 23px!important;}
+.mt-25 { margin-top: 25px!important;}
+.mt-30 { margin-top: 30px!important;}
+.mt-40 { margin-top: 40px!important;}
+
+.mt_0 { margin-top: 0px!important;}
+.mt_5 { margin-top: -5px!important;}
+.mt_10 { margin-top: -10px!important;}
+.mt_20 { margin-top: -20px!important;}
+.mt_30 { margin-top: -30px!important;}
+
+.mb-10 {margin-bottom: 10px!important;}
+.mb-15 {margin-bottom: 15px!important;}
+.mb-20 {margin-bottom: 20px!important;}
+.mb-25 {margin-bottom: 25px!important;}
+.mb-30 {margin-bottom: 30px!important;}
+.mb-40 {margin-bottom: 40px!important;}
+
+.lh-40 { line-height: 40px!important;;}
+
+.wd-20 {width: 20%!important;}
+.wd-25 {width: 25%!important;}
+.wd-30 {width: 30%!important;}
+.wd-40 {width: 40%!important;}
+.wd-50 {width: 50%!important;}
+
+.pb-100 {padding-bottom:100px!important;}
+
+/***************************************************/
+
+/***  4. TEXTOS ***/
+
+.conteudo-interno p {
+	padding-bottom: 12px;
+	line-height: 135%;
+}
+
+h1 {
+	font-size: 32px;
+	font-weight: 300;
+	color: #212121;
+	margin-bottom: 20px;
+	line-height: 140%;
+}
+
+section#conteudo .resumo-info p {
+	font-size: 14px;
+	line-height: 150%;
+	margin-bottom: 10px;
+}
+
+.box-resumo h2 {
+	color:#395898;
+	font-size: 24px;
+	margin-bottom: 35px;
+	text-align: center;
+	line-height: 130%;
+}
+
+.box-assinatura h3 {
+	font-size: 26px;
+	border-bottom: none;
+	color:#212121;
+	font-weight: 400;
+	text-transform: uppercase;
+	margin-bottom: 25px;
+}
+
+h3 {
+	font-size: 24px;
+	font-weight: 300;
+	color: #212121;
+	margin-bottom: 20px;
+	line-height: 140%;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+	display: block;
+}
+
+.box-conteudo h4 {
+	background: #F8F8F8;
+	font-size: 14px;
+	color:#464646;
+	padding: 0 10px;
+	line-height: 40px;
+	height: 40px;
+	margin-bottom: 0;
+	font-weight: 600;
+}
+
+#area-resumo-proposta h4 {
+	font-size: 16px;
+	text-align: center;
+	font-weight: 600;
+	color: #444444;
+	text-transform: uppercase;
+	margin-bottom: 30px;
+}
+
+.conteudo-principal h5 {
+	font-size: 14px;
+	color: #656565;
+	font-weight: 600;
+	margin: 20px 0 0 10px;
+}
+
+h4 {
+	font-weight:600;
+	font-size:16px;
+	color:#535353;
+	margin-bottom:10px;
+}
+
+h6 {
+	border-bottom: 1px solid #E1E1E1;
+	font-size: 20px;
+	color: #202020;
+	font-weight: 300;
+	padding-bottom: 6px;
+	margin: 5px 0 15px 0;
+}
+
+blockquote {
+    border-left: none;
+	margin: 0;
+	padding: 0;
+}
+
+blockquote p:before {
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    float: left;
+    margin-right: 10px;
+}
+
+p.passos {
+	font-weight:600;
+	font-size:15px;
+	text-transform:uppercase;
+}
+
+.cor-azul { color: deepskyblue;}
+.cor-vermelha {color: red;}
+.cor-verde { color: green;}
+
+/***************************************************/
+
+/* 5. BOTOES */
+
+button.btn-principal {
+	height: 40px;
+	display: inline-block;
+	padding: 0 45px;
+	font-size:12px;
+	line-height: 40px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 800;
+}
+
+button.btn-principal:hover {
+	transition: 0.3s;
+}
+
+button.btn-secundario {
+	height: 40px;
+	display: inline-block;
+	padding: 0 20px;
+	font-size:12px;
+	line-height: 40px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 700;
+}
+
+button.btn-secundario:hover {
+	transition: 0.3s;
+}
+
+button.btn-medio {
+	height: 30px;
+	display: inline-block;
+	padding: 0 15px;
+	font-size:12px;
+	line-height: 30px;
+	font-weight: 700;
+}
+
+button.btn-medio:hover {
+	transition: 0.3s;	
+}
+
+button.btn-input {
+	height: 34px;
+	display: inline-block;
+	padding: 0 15px;
+	font-size:12px;
+	line-height: 34px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 1px;	
+}
+
+button.btn-input:hover {
+	transition: 0.3s;	
+}
+
+button.btn-amarelo {
+	color:#41407B;
+	background: #F4DC32;
+}
+
+button.btn-amarelo-disabled, button.btn-amarelo-disabled:hover {
+	color:#41407B;
+	background: #F4DC32;
+	opacity:0.5;
+	cursor:default;
+}
+
+button.btn-amarelo:hover {
+	color:#514F99;
+	background: #ECD00D;
+}
+
+button.btn-laranja {
+	color:#fff;
+	background: #E48B50;
+}
+
+button.btn-laranja:hover {
+	color:#fff;
+	background: #DE7127;
+}
+
+button.btn-azul {
+	color:#fff;
+	background: #6785BD;
+}
+
+button.btn-azul:hover {
+	color:#fff;
+	background: #486AA8;
+}
+
+button.btn-verde {
+	color:#fff;
+	background: #00A452;
+}
+
+button.btn-verde:hover {
+	color:#E6F6EE;
+	background: #007D3F;
+}
+
+button.btn-cinza {
+	color:#545454;
+	background: #ddd;
+}
+
+button.btn-cinza:hover {
+	color:#333;
+	background: #aaa;
+}
+
+button.btn-borda-azul {
+	color:#335397;
+	background: #fff;
+	border:1px solid #335397;
+	font-weight: 600;
+	letter-spacing: 2px;
+}
+
+button.btn-borda-azul:hover {
+	color:#fff;
+	background: #335397;
+}
+
+button.btn-exibir {
+	color:#fff;
+	background: #19345F;
+}
+
+button.btn-exibir:hover {
+	color:#fff;
+	background: #0F1F39;
+}
+
+button.disabled {
+	cursor: not-allowed;
+}
+
+/***************************************************/
+
+/* 6. MENSAGENS */
+
+.alert {
+	display: inline-block;
+	padding: 10px 15px;
+	margin: 20px 0;
+	color:#454545;
+}
+
+.alert i {
+	padding-right: 8px;
+	font-size: 16px;
+}
+
+.alert-success {
+	border-radius: 0px;
+	border: 0px;
+	border-left: 5px solid #7BB937;
+}
+
+.alert-info {
+	border-radius: 0px;
+	border: 0px;
+	border-left: 5px solid #1056A1;
+}
+
+.alert-warning {
+	border-radius: 0px;
+	border: 0px;
+	border-left: 5px solid #A2720F;
+}
+
+.alert-danger {
+	border-radius: 0px;
+	border: 0px;
+	border-left: 5px solid #9F1111;
+}
+
+h3.box-status-ok {
+	border:1px solid #D7ECBD;
+	padding: 40px;
+	font-size: 24px;
+	color:#7AB837;
+	text-transform: uppercase;
+	font-weight: 700;
+	text-align: center;
+	background: #ECF6E0;
+	overflow: hidden;
+}
+
+h3.box-status-alerta {
+	border:1px solid #EBD9BA;
+	padding: 40px;
+	font-size: 24px;
+	color:#D2AC64;
+	text-transform: uppercase;
+	font-weight: 700;
+	text-align: center;
+	background: #F6EEE0;
+	overflow: hidden;
+}
+
+h3.box-status-erro {
+	border:1px solid #FCD3CD;
+	padding: 40px;
+	font-size: 24px;
+	color:#F37460;
+	text-transform: uppercase;
+	font-weight: 700;
+	text-align: center;
+	background: #FDE3DF;
+	overflow: hidden;
+}
+
+h3.box-status-ok i, h3.box-status-alerta i, h3.box-status-erro i {
+	margin-right: 10px;
+}
+
+h3.box-status-alerta span.obs {
+	color:#545454;
+	font-size: 14px;
+	font-weight: 400;
+	text-transform: none;
+}
+
+div.box-status-ok {
+	border:1px solid #D7ECBD;
+	padding: 20px;
+	text-align: center;
+	background: #ECF6E0;
+	overflow: hidden;
+	max-width: 600px;
+	margin: 0 auto;
+	color:#7AB837;	
+}
+
+div.box-status-ok i { 
+	float: left;
+	font-size: 50px;
+	margin-right: 15px;
+}
+
+div.box-status-ok p {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 145%;
+}
+
+/***************************************************/
+
+/* 7. FORMS */
+
+.form-control {
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #888;
+}
+
+.form-control:focus {
+    border-color:#fff;
+    box-shadow: 0 0 5px #A1A1A1;
+    outline: 0 none;
+	color:#333;
+}
+
+textarea { 
+	font-style: normal; 
+	height: 100px;
+}
+
+textarea:focus { 
+	font-style:normal;  
+}
+
+textarea:placeholder-shown {
+	font-style: italic;
+	color:#ACACA6;
+}
+
+.form-check {
+    position: relative;
+    display: block;
+    margin-bottom: .5rem
+}
+
+.form-check.disabled .form-check-label {
+    color: #636c72;
+    cursor: not-allowed
+}
+
+.form-check-label {
+    margin-bottom: 0;
+    cursor: pointer
+}
+
+.form-check-inline {
+	margin-right: 10px;
+}
+
+.form-check-input {
+    position: absolute;
+    margin-top: .25rem;
+    margin-left: -1.25rem
+}
+
+.form-check-input:only-child {
+    position: static
+}
+
+.form-check-inline {
+    display: inline-block
+}
+
+.form-check-inline .form-check-label {
+    vertical-align: middle
+}
+
+.form-check-inline+.form-check-inline {
+    margin-left: .75rem
+}
+
+label.form-check-label {
+	color:#454545!important;
+	font-size: 12px!important;
+	font-weight: 400!important;
+}
+
+.campos label {
+	font-size: 12px;
+	color:#555555;
+	font-weight: 600;
+}
+
+.campos .form-control {
+	margin-bottom: 15px;
+}
+
+.input-renda {
+	padding: 2px 5px!important;
+	font-size: 11px!important;
+	width: 120px!important;
+	height: 22px!important;
+	margin-top: 2px!important;
+}
+
+.campos .checkbox {
+	font-size: 12px!important;
+	line-height: 190%!important;
+}
+
+#termo-aceite-imovel .box-botoes button {
+	margin-right: 10px;
+}
+
+/***************************************************/
+
+/* 8. CONTAGEM FINAL DA PÁGINA */
+
+.dados-contagem {
+	display: block;
+	overflow: hidden;
+}
+
+.dados-contagem .info-numeracao {
+	float: left;
+	font-size: 11px;
+	color:#545454;
+	font-weight: 600;
+	line-height: 350%;
+}
+
+.dados-contagem .area-botao {
+	float: right;
+}
+
+/***************************************************/
+
+/* 9. BLOCO AJUDA */
+
+.chat-comum {
+	border-top: 1px solid #E1E1E1;
+	width: 80%;
+	margin: 0 auto;
+	padding-bottom: 25px;
+	padding-top: 25px;
+	display: block;
+}
+
+.chat-comum p {
+	margin-bottom: 25px;
+	color:#333;
+	font-size: 18px;
+	font-weight: 300;
+}
+
+.chat-comum img {
+	margin: 0 10px;
+}
+
+.campos .chat-comum {
+	margin-top: 10px;
+	border-top: none;
+}
+
+/***************************************************/
+
+/* 10. BOX MENSAGENS E AVISOS */
+
+.box-mensagem {
+	max-width: 625px;
+	border:1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0 0px 10px #ccc;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	display: block;
+	padding: 45px 25px 25px 25px;
+}
+
+.box-mensagem i {
+	font-size: 50px;
+	border: 1px solid #ccc;
+	border-radius: 50px;
+	padding: 5px;
+}
+
+.box-mensagem h2 {
+	font-size: 24px;
+	font-weight: 700;
+	margin: 25px 0 15px 0;
+}
+
+.box-mensagem p {
+	margin-bottom: 12px;
+	line-height: 140%;
+}
+
+.box-principal .sucesso {
+	border:1px solid #9ED166;
+}
+
+.box-principal .sucesso i.fa-check {
+	color:#9ED166;
+	border-color:#9ED166;
+}
+
+.box-principal .sucesso h2 {
+	color:#9ED166;
+}
+
+.box-visita {
+	background: #ECF6E0;
+	border:1px solid #DFF0CA;
+	box-shadow: 0 0 10px #F3F3F3;
+	padding: 20px;
+	display: inline-block;
+}
+
+.box-visita i {
+	font-size: 80px;
+	color: #CAE6A8;
+	float: left;
+	width: 120px;
+}
+
+.box-visita .info {
+	float: left;
+	width: 400px;
+	color:#333;
+	font-size: 13px;
+	font-weight: 600;	
+}
+
+.box-visita .info p {
+	font-size: 15px;
+}
+
+.box-visita .info span.text-uppercase {
+	font-weight: 300;
+}
+
+.box-imovel-restricao {
+	background:#F6EEE0;
+	border:1px solid #EFE1C9;
+	box-shadow: 0 0 10px #F3F3F3;
+	padding: 20px;
+	display: inline-block;
+	margin-top: 10px;
+}
+
+.box-imovel-restricao i {
+	font-size: 80px;
+	color: #EBDABB;
+	float: left;
+	width: 120px;
+}
+
+.box-imovel-restricao .info {
+	float: left;
+	width: 500px;
+	color:#333;
+	font-weight: 600;
+	line-height: 250%;
+}
+
+.box-imovel-restricao .info span.text-uppercase {
+	font-weight: 300;
+}
+
+.box-imovel-restricao .valor-inicial {
+	font-size: 14px;
+	margin-top: 15px;
+}
+
+.box-imovel-restricao .valor-final {
+	font-size: 16px;
+}
+
+.box-envio {
+	background:#E1E8F0;
+	border:1px solid #CAD0D8;
+	box-shadow: 0 0 10px #F3F3F3;
+	padding: 20px;
+	display: inline-block;
+}
+
+.box-envio i {
+	font-size: 80px;
+	color: #BFCBDE;
+	float: left;
+	width: 120px;
+}
+
+.box-envio .info {
+	float: left;
+	width: auto;
+	color:#333;
+	font-size: 13px;
+	font-weight: 600;	
+}
+
+.box-envio .info p {
+	font-size: 15px;
+}
+
+.box-correios {
+	background:#fff;
+	border:1px solid #CAD0D8;
+	padding:20px;
+	width:auto;
+	max-width:300px;
+}
+
+.box-correios img {
+	margin-bottom:20px;
+}
+
+.box-pgto-devido {
+	background: #ECF6E0;
+	border:1px solid #DFF0CA;
+	box-shadow: 0 0 10px #F3F3F3;
+	padding: 20px;
+	display: inline-block;
+}
+
+.box-pgto-devido i {
+	font-size: 80px;
+	color: #CAE6A8;
+	float: left;
+	width: 120px;
+}
+
+.box-pgto-devido .info {
+	float: left;
+	width: auto;
+	color:#333;
+	font-size: 13px;
+	font-weight: 600;	
+	text-align: right;
+}
+
+.box-pgto-devido .info p {
+	font-size: 13px;
+}
+
+.box-pgto-devido .info span.text-uppercase {
+	font-weight: 300;
+}
+
+.box-pgto-devido p.valor-final {
+	border-top: 1px solid #555;
+	padding-top: 10px;
+	font-size: 15px;
+}
+
+table.tab-envio {
+	font-size:13px;
+}
+
+table.tab-envio .info {
+	text-align:right;
+	padding:2px 5px;
+}
+
+table.tab-envio .dados {
+	padding:2px 5px;
+	font-weight:600;
+}
+
+table.tab-envio .dados a {
+	text-decoration:underline;
+}
+
+table.tab-envio .dados a:hover {
+	text-decoration:none;
+}
+
+ul.lista-envio {
+	margin:15px 0 30px 0;
+}
+
+ul.lista-envio li {
+	line-height:150%;
+}
+
+.box-conta-atual {
+	background:#E1E8F0;
+	border:1px solid #CAD0D8;
+	padding:20px;
+	display:inline-block;
+	font-weight:600;
+	margin-bottom:30px;
+	font-size:13px;
+}
+
+.box-conta-atual i {
+	font-size: 80px;
+	color: #B6C8DB;
+	float: left;
+	width: 120px;
+}
+
+.box-conta-atual .info {
+	float:right;
+	width:250px;
+	margin-top:15px;
+}
+
+.box-conta-atual .info p {
+	line-height:120%;
+	margin-bottom:0;
+}
+
+/***************************************************/
+
+/* 11.	ÍCONES NO INPUT*/
+
+.input-icone {
+    position: relative;
+    color: #555;
+    display: block;
+}
+
+.input-icone:after,
+.input-icone:before {
+    display: table;
+    content: " ";
+}
+
+.input-icone:after {
+    clear: both;
+}
+
+.input-icone .fa {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    font-size: 14px;
+    width: 20px;
+    margin-left: -2.5px;
+    text-align: center;
+    padding: 10px 0;
+    top: 1px
+}
+
+.input-icone.addon-md .form-control,
+.input-icone .form-control {
+    padding-left: 30px;
+    float: left;
+    font-weight: normal;
+}
+
+/***************************************************/
+
+
