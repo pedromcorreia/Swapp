@@ -7,3 +7,10 @@ C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp\Bcredi.Utils\bin\Debug\Swapp.Util
 C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp\Bcredi.Utils\bin\Debug\Swapp.Utils.pdb
 C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp\Bcredi.Utils\obj\Debug\Swapp.Utils.dll
 C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp\Bcredi.Utils\obj\Debug\Swapp.Utils.pdb
+C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp-Git\Bcredi.Utils\bin\Debug\Swapp.Utils.dll.config
+C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp-Git\Bcredi.Utils\bin\Debug\Swapp.Utils.dll
+C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp-Git\Bcredi.Utils\bin\Debug\Swapp.Utils.pdb
+C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp-Git\Bcredi.Utils\bin\Debug\MySql.Data.dll
+C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp-Git\Bcredi.Utils\obj\Debug\Swap.Utils.csprojResolveAssemblyReference.cache
+C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp-Git\Bcredi.Utils\obj\Debug\Swapp.Utils.dll
+C:\Users\pedro\OneDrive\Documentos\Swapp\Swapp-Git\Bcredi.Utils\obj\Debug\Swapp.Utils.pdb

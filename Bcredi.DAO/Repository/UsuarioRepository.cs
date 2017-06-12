@@ -11,6 +11,9 @@ using Bcredi.DAO.Service;
 using System.Configuration;
 using System.Collections;
 using System.Linq;
+using MySql.Data;
+using System;
+using MySql.Data.MySqlClient;
 
 namespace Bcredi.DAO.Repository
 {
@@ -21,6 +24,7 @@ namespace Bcredi.DAO.Repository
 
         static string ambiente = ConfigurationManager.ConnectionStrings["Connection-Swapp"].ConnectionString;
         static string strConexao = ConfigurationManager.ConnectionStrings[ambiente].ConnectionString;
+        MySql.Data.MySqlClient.MySqlConnection conn;
         private DBUtil dbUtil = new DBUtil();
 
         public List<Usuario> getDescriptionPartial(string texto)
@@ -670,104 +674,53 @@ namespace Bcredi.DAO.Repository
 
             return lista;
         }
-        public Usuario getUsuarioByLoginSenha(string login, string password)
+
+        public Usuario getUsuarioByLoginSenha(Usuario Usuario)
         {
-            Usuario usuario = new Usuario();
+
+            MySqlConnection Conexao = new MySqlConnection(strConexao);
+            MySqlCommand Query = new MySqlCommand();
+            Query.Connection = Conexao;
 
             string sql = @"
-                            
-                            SELECT U.idUsuario, U.nome, U.login, U.email, U.password, U.guidUsuario, U.chaveDocumentoAssinatura,
-                            U.isAtivo, U.tokenResetSenha, U.ipUltimoAcesso, U.cpf_cnpj as cpf_cnpj, U.dataNascimento as dataNascimento, 
-                            usuIns.idUsuario as idUsuarioInclusao,
-                            usuIns.nome as nomeInclusao, 
-                            CONVERT(VARCHAR(10), U.dataInclusao, 103) + ' ' + convert(VARCHAR(8), U.dataInclusao, 14) as dataInclusao,
-                            usuUpd.idUsuario as idUsuarioAtualizacao,
-                            usuUpd.nome as nomeAtualizacao,
-                            CONVERT(VARCHAR(10), U.dataAtualizacao, 103) + ' ' + convert(VARCHAR(8), U.dataAtualizacao, 14) as dataAtualizacao,            
-                            CONVERT(VARCHAR(10), U.dataUltimoAcesso, 103) + ' ' + CONVERT(VARCHAR(8), U.dataUltimoAcesso, 108) as dataUltimoAcesso
-                            FROM USUARIO U
-                            LEFT JOIN USUARIO usuIns ON usuIns.idUsuario = U.idUsuarioInclusao
-                            LEFT JOIN USUARIO usuUpd ON usuUpd.idUsuario = U.idUsuarioAtualizacao
-                            WHERE  U.login = @login AND U.isAtivo = 1
+            SELECT 
+                idUsuario,nome,login,email,password,telefone,cpf,isAtivo,dataNascimento
+            FROM 
+                usuario
+            WHERE
+                login = @login 
+                AND isAtivo = 1
                 ";
-            
-
-            SqlConnection conexao = null;
 
             try
             {
-                conexao = dbUtil.openConnection();
 
-                SqlCommand sqlCommand = new SqlCommand(string.Format(sql, Core.BcrediDB, Core.SecurityDB), conexao);
-                #region [PARAMETROS]
+                Query.CommandText = sql;
+                Conexao.Open();//Abre conexão
+                Query.Parameters.AddWithValue("@login", Usuario.Login);
+                Query.Parameters.AddWithValue("@password", Usuario.Password);
+                MySqlDataReader MysqlConexao = Query.ExecuteReader();//Crie um objeto do tipo reader para ler os dados do banco
 
-                SqlParameter paramLogin = new SqlParameter("@login", System.Data.SqlDbType.VarChar);
-                paramLogin.Value = login;
 
-                sqlCommand.Parameters.Add(paramLogin);
-
-                #endregion [PARAMETROS]
-
-                SqlDataReader dados = dbUtil.getDados(sqlCommand);
-
-                if (dados.HasRows)
+                if (MysqlConexao.Read())//Enquanto existir dados no select
                 {
-                    if (dados.Read())
+                    if (!Bcredi.Utils.Utils.Decryption(MysqlConexao["password"].ToString()).Equals(Usuario.Password))
                     {
-                        if (!Bcredi.Utils.Utils.Decryption(dados["password"].ToString()).Equals(password))
-                        {
-                            // senha inválida, retornar null
-                            return null;
-                        }
-
-                        Usuario usuarioInclusao = new Usuario();
-                        if (!string.IsNullOrEmpty(dados["idUsuarioInclusao"].ToString()))
-                        {
-                            usuarioInclusao = usuarioInclusao.buildUsuario(Int32.Parse(dados["idUsuarioInclusao"].ToString()), dados["nomeInclusao"].ToString());
-                        }
-
-                        Usuario usuarioAtualizador = new Usuario();
-                        if (!string.IsNullOrEmpty(dados["idUsuarioAtualizacao"].ToString()))
-                        {
-                            usuarioAtualizador = usuarioAtualizador.buildUsuario(Int32.Parse(dados["idUsuarioAtualizacao"].ToString()), dados["nomeAtualizacao"].ToString());
-                        }
-
-                        usuario.setId(int.Parse(dados["idUsuario"].ToString()));
-                        usuario.Login = dados["login"].ToString();
-                        usuario.Nome = dados["nome"].ToString();
-                        //usuario.DataAniversario = dados["nome"].ToString();
-                        usuario.Email = dados["email"].ToString();
-                        usuario.Password = dados["password"].ToString();
-                        //usuario.IdPerfil = int.Parse(dados["idPerfil"].ToString());
-                        usuario.setAtivo(dados["isAtivo"].ToString().Equals(Constantes.ATIVO));
-                        usuario.setUsuarioCriador(usuarioInclusao);
-                        usuario.TokenResetSenha = dados["tokenResetSenha"].ToString();
-                        usuario.DataAniversario = (Convert.ToDateTime(dados["dataNascimento"]));
-                        usuario.GuidUsuario = dados["guidUsuario"].ToString();
-                        usuario.Cpf_cnpj = dados["cpf_cnpj"].ToString();
-                        usuario.ChaveDocumentoAssinatura = dados["chaveDocumentoAssinatura"].ToString();
-                        if (!string.IsNullOrEmpty(dados["dataInclusao"].ToString()))
-                        {
-                            usuario.setDataCriacao(Convert.ToDateTime(dados["dataInclusao"]));
-                            usuario.setUsuarioAtualizador(usuarioAtualizador);
-                        }
-
-                        if (!string.IsNullOrEmpty(dados["dataAtualizacao"].ToString()))
-                        {
-                            usuario.setDataAtualizacao(Convert.ToDateTime(dados["dataAtualizacao"]));
-                        }
-
-                        usuario.DataUltimoAcesso = dados["dataUltimoAcesso"].ToString();
-                        usuario.IpUltimoAcesso = dados["ipUltimoAcesso"].ToString();
-
+                        // senha inválida, retornar null
+                        return null;
+                    }
+                    else
+                    {
+                        Usuario.Nome = MysqlConexao["nome"].ToString();//Preencha objeto do tipo cliente com dados vindo do banco de dados
+                        Usuario.Login = MysqlConexao["login"].ToString();
+                        Usuario.Email = MysqlConexao["email"].ToString();
+                        Usuario.Password = MysqlConexao["password"].ToString();
+                        Usuario.Telefone = MysqlConexao["telefone"].ToString();
+                        Usuario.Cpf_cnpj = MysqlConexao["cpf"].ToString();
+                        Usuario.IsAtivo = (int.Parse(MysqlConexao["isAtivo"].ToString()) == 1) ? true : false;
+                        Usuario.DataAniversario = DateTime.Parse(MysqlConexao["dataNascimento"].ToString());
                     }
                 }
-                else
-                {
-                    // Registro não encontrado, retornar sempre null
-                    return null;
-                }
-
             }
             catch (Exception ex)
             {
@@ -775,10 +728,10 @@ namespace Bcredi.DAO.Repository
             }
             finally
             {
-                dbUtil.closeConnection(conexao);
+                Conexao.Close();//Fecha Conexao
             }
 
-            return usuario;
+            return Usuario;
         }
 
         public int updateSenha(string login, string senha)
@@ -832,71 +785,45 @@ namespace Bcredi.DAO.Repository
 
         public int insertUsuario(Usuario usuario)
         {
-            int idUsuario = 0;
-            
+            usuario.Id = 0;
+
+            Usuario Usuario = new Usuario();//Estancia objeto do tipo Usuario
+
+            MySqlConnection Conexao = new MySqlConnection(strConexao);
+            MySqlCommand Query = new MySqlCommand();
+            Query.Connection = Conexao;
 
             string sql = @"
-            INSERT INTO {0}.dbo.[USUARIO]([nome], [email], [login], [fone], [cpf_cnpj], [tokenResetSenha], [isAtivo], [dataInclusao], [password], [cep], 
-                                          [dataNascimento],[melhorHorario],[melhorDia],[telefonePreferencial],[guidUsuario])
-                                    VALUES(@nome, @email, @login, @telefone, @cpfCnpj, @Token, 0, GETDATE(), @Password, @Cep, 
-                                          @DataAniversario, @melhorHorario, @melhorDia, @telefonePreferencial, @guidusuario);
+            INSERT INTO usuario
+                (nome,login,email,password,telefone,dataNascimento,cpf)
+            VALUES
+                (@nome,@login,@email,@password,@telefone,@dataNascimento,@cpf);
+            SELECT LAST_INSERT_ID()
             ";
 
-            SqlConnection conexao = null;
 
             try
             {
-                conexao = dbUtil.openConnection();
+                Query.CommandText = sql;
+                Conexao.Open();//Abre conexão
 
-                SqlCommand sqlCommand = new SqlCommand(string.Format(sql, Core.BcrediDB, Core.SecurityDB), conexao);
                 #region [PARAMETROS]
 
-                SqlParameter paramNome = new SqlParameter("@nome", System.Data.SqlDbType.VarChar);
-                paramNome.Value = usuario.Nome;
-
-                SqlParameter paramLogin = new SqlParameter("@login", System.Data.SqlDbType.VarChar);
-                paramLogin.Value = usuario.Login;
-
-                SqlParameter paramEmail = new SqlParameter("@email", System.Data.SqlDbType.VarChar);
-                paramEmail.Value = usuario.Email;
-
-                SqlParameter paramTelefone = new SqlParameter("@telefone", System.Data.SqlDbType.VarChar);
-                paramTelefone.Value = usuario.Telefone;
-
-                SqlParameter paramCpfCnpj = new SqlParameter("@cpfCnpj", System.Data.SqlDbType.VarChar);
-                paramCpfCnpj.Value = usuario.Cpf_cnpj;
-
-                SqlParameter paramToken = new SqlParameter("@Token", System.Data.SqlDbType.VarChar);
-                paramToken.Value = usuario.TokenResetSenha;
-
-                SqlParameter paramPassword = new SqlParameter("@Password", System.Data.SqlDbType.VarChar);
-                paramPassword.Value = usuario.Password;
-
-                SqlParameter paramCep = new SqlParameter("@Cep", System.Data.SqlDbType.VarChar);
-                paramCep.Value = usuario.Cep;
-
-                SqlParameter paramDataAniversario = new SqlParameter("@DataAniversario", System.Data.SqlDbType.DateTime);
-                paramDataAniversario.Value = usuario.DataAniversario;
-               
-                SqlParameter paramGuidUsuario = new SqlParameter("@guidusuario", System.Data.SqlDbType.VarChar);
-                paramGuidUsuario.Value = usuario.GuidUsuario;
-
-                sqlCommand.Parameters.Add(paramNome);
-                sqlCommand.Parameters.Add(paramLogin);
-                sqlCommand.Parameters.Add(paramEmail);
-                sqlCommand.Parameters.Add(paramTelefone);
-                sqlCommand.Parameters.Add(paramCpfCnpj);
-                sqlCommand.Parameters.Add(paramToken);
-                sqlCommand.Parameters.Add(paramPassword);
-                sqlCommand.Parameters.Add(paramCep);
-                sqlCommand.Parameters.Add(paramDataAniversario);
-                sqlCommand.Parameters.Add(paramGuidUsuario);
-
+                Query.Parameters.AddWithValue("@nome", usuario.Nome);
+                Query.Parameters.AddWithValue("@login", usuario.Login);
+                Query.Parameters.AddWithValue("@email", usuario.Email);
+                Query.Parameters.AddWithValue("@password", usuario.Password);
+                Query.Parameters.AddWithValue("@telefone", usuario.Telefone);
+                Query.Parameters.AddWithValue("@dataNascimento", usuario.DataAniversario);
+                Query.Parameters.AddWithValue("@cpf", usuario.Cpf_cnpj);
 
                 #endregion [PARAMETROS]
+                MySqlDataReader MysqlConexao = Query.ExecuteReader();//Executar a query no banco
 
-                dbUtil.executeNonQuery(sqlCommand);
-
+                if (MysqlConexao.Read())
+                {
+                    usuario.Id = int.Parse(MysqlConexao["LAST_INSERT_ID()"].ToString());
+                }
             }
             catch (Exception ex)
             {
@@ -905,10 +832,10 @@ namespace Bcredi.DAO.Repository
             finally
             {
 
-                dbUtil.closeConnection(conexao);
+                Conexao.Close();//Fecha Conexao
             }
 
-            return idUsuario;
+            return usuario.Id;
         }
 
         public int updateUsuario(Usuario usuario)
@@ -1542,12 +1469,12 @@ namespace Bcredi.DAO.Repository
                 {
                     var atualizarBD = @"Update dbo.USUARIO Set indicadorAssinatura = 1, chaveDocumentoAssinatura = @guidDocumentoClickSign
                                             Where guidUsuario = @guidUsuario";
-                        conexaoBD.Execute(atualizarBD, new
-                        {
-                            guidUsuario = guidUsuario,
-                            guidDocumentoClickSign = guidDocumentoClickSign
-                        });
-                 }
+                    conexaoBD.Execute(atualizarBD, new
+                    {
+                        guidUsuario = guidUsuario,
+                        guidDocumentoClickSign = guidDocumentoClickSign
+                    });
+                }
                 retorno = true;
             }
             catch (Exception ex)

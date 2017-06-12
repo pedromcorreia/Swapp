@@ -77,9 +77,9 @@ namespace Bcredi.DAO.Service
         {
             return usuarioRepository.setUsuarioSalvar(usuario);
         }
-        public Usuario getUsuarioByLoginSenha(string login, string password)
+        public Usuario getUsuarioByLoginSenha(Usuario Usuario)
         {
-            return usuarioRepository.getUsuarioByLoginSenha(login, password);
+            return usuarioRepository.getUsuarioByLoginSenha(Usuario);
         }
 
         public void atualizarUltimoAcesso(int idUsuario, string ip)

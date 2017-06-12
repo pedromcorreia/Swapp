@@ -93,7 +93,10 @@ namespace Bcredi.Web.Controllers
             string password = form["txtPassword"];
             //TODo Pedro Alterar
             //usuario = usuarioService.getUsuarioByLoginSenha(login, password);
-              usuario = usuarioService.getUsuarioByLoginSenha(login, password);
+
+            usuario.Login = login;
+            usuario.Password = password;
+            usuario = usuarioService.getUsuarioByLoginSenha(usuario);
 
             // Se não encontrou usuario, exibe mensagem de aviso
             if (usuario == null)
@@ -118,9 +121,9 @@ namespace Bcredi.Web.Controllers
 
             string ipAcesso = Bcredi.Utils.Utils.getUserIp(Request);
 
-            usuarioService.atualizarUltimoAcesso(usuario.Id, ipAcesso);
+            //usuarioService.atualizarUltimoAcesso(usuario.Id, ipAcesso);
 
-            Logger.getLogger().Info("LOGIN USUARIO " + Core.UsuarioAtual.Login.ToUpper() + " : " + System.DateTime.Now.ToString());
+            //Logger.getLogger().Info("LOGIN USUARIO " + Core.UsuarioAtual.Login.ToUpper() + " : " + System.DateTime.Now.ToString());
 
             // Gera novo UUID (universal unique identifier) para representar a sessão atual
             Core.SessionUUID = Guid.NewGuid().ToString().ToUpper();
@@ -327,7 +330,7 @@ namespace Bcredi.Web.Controllers
                 string newpassword = form["txtNovaSenha"];
 
                 // Verifica se código de segurança informado corresponse à senha temporária
-                usuario = usuarioService.getUsuarioByLoginSenha(login, txtCodSeguranca);
+                usuario = usuarioService.getUsuarioByLoginSenha(usuario);
 
                 // Se não encontrou usuario, exibe mensagem de aviso
                 if (usuario == null)

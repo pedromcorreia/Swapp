@@ -58,7 +58,7 @@
                                 <input type="text" class="form-control cpf cpf_cnpj" autocomplete="off" id="txtCpf" name="txtCpf" value="@ViewBag.txtCpf" maxlength="14">
                             </div>
                             <div class="form-group">
-                                <label>Telefone celular:<span class="obrigatorio" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Campo obrigatório">*</span></label>
+                                <label>Telefone:<span class="obrigatorio" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Campo obrigatório">*</span></label>
                                 <input type="text" class="form-control telefone_9dig" autocomplete="off" id="txtTelefone" name="txtTelefone" value="@ViewBag.txtTelefone" maxlength="11">
                             </div>
                             <div class="form-group">
@@ -73,11 +73,6 @@
                                     <input type="text" class="form-control dataNascimento calendario" autocomplete="off" id="txtDataNascimento" name="txtDataNascimento" value="@Model.DataAniversario" maxlength="10">
                                 }
                                 <small class="text-muted"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Atenção: siga o modelo dd/mm/aaaa. </small>
-                            </div>
-
-                            <div class="form-group">
-                                <label>CEP:<span class="obrigatorio" data-tooltip-length="xlarge" data-toggle="tooltip" data-placement="top" data-original-title="Campo obrigatório">*</span></label>
-                                <input type="text" class="form-control cep" autocomplete="off" id="txtCep" name="txtCep" value="@ViewBag.txtCep" maxlength="9">
                             </div>
                             <div class="alert alert-danger hide" id="divEmailExistente" name="divEmailExistente">
                                 <span>Atenção</span> Esse e-mail já existe!
@@ -112,52 +107,49 @@
 
 <script type="text/javascript">
 
-    function FunctionVerificarSenha() {
+    //function FunctionVerificarSenha() {
 
-        if (document.getElementById("txtPassword").value != document.getElementById("txtPasswordConfirm").value) {
-            $("#divConfirmarSenha").removeClass('hide');
-            return false;
-        }
-        else {
-            $("#divConfirmarSenha").addClass('hide');
-            return true;
-        }
-    };
+    //    if (document.getElementById("txtPassword").value != document.getElementById("txtPasswordConfirm").value) {
+    //        $("#divConfirmarSenha").removeClass('hide');
+    //        return false;
+    //    }
+    //    else {
+    //        $("#divConfirmarSenha").addClass('hide');
+    //        return true;
+    //    }
+    //};
     $(document).ready(function () {
         $("#btncriar").click(function () {
-            if (FunctionVerificarSenha()) {
-                $("form").submit();
-            }
-            else {
-            }
+            $("form").submit();
         });
-
-        $("body").delegate("#txtEmail", "change", function () {
-
-            var email = $("#txtEmail").val();
-
-            $.ajax({
-                url: "/Usuario/EmailExiste",
-                type: "POST",
-                async: false,
-                dataType: "html",
-                data: {
-                    emailJson: email
-                },
-                success: function (dados) {
-                    var result = $.parseJSON(dados);
-                    if (result.Data) {
-                        $("#divEmailExistente").removeClass("hide");
-                    }
-                    else {
-                        $("#divEmailExistente").addClass("hide");
-                    }
-                },
-                error: function (result) {
-                }
-            })
-            event.preventDefault();
-        });
-        reloadAllValidation();
     });
+
+    //    $("body").delegate("#txtEmail", "change", function () {
+
+    //        var email = $("#txtEmail").val();
+
+    //        $.ajax({
+    //            url: "/Usuario/EmailExiste",
+    //            type: "POST",
+    //            async: false,
+    //            dataType: "html",
+    //            data: {
+    //                emailJson: email
+    //            },
+    //            success: function (dados) {
+    //                var result = $.parseJSON(dados);
+    //                if (result.Data) {
+    //                    $("#divEmailExistente").removeClass("hide");
+    //                }
+    //                else {
+    //                    $("#divEmailExistente").addClass("hide");
+    //                }
+    //            },
+    //            error: function (result) {
+    //            }
+    //        })
+    //        event.preventDefault();
+    //    });
+    //    reloadAllValidation();
+    //});
 </script>

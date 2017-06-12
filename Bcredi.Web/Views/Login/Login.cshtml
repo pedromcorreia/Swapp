@@ -1,6 +1,10 @@
 ﻿@{
-	ViewBag.Title = "Bem vindo ao Swapp";      
-	Layout = "~/Views/Shared/_Layout_LoginCadastro.cshtml";
+    ViewBag.Title = "Bem vindo ao Swapp";
+    Layout = "~/Views/Shared/_Layout_LoginCadastro.cshtml";
+
+
+    ViewBag.txtLogin = "pedmcor@gmail.com";
+    ViewBag.txtPassword = "123456";
 }
 
 <main>
@@ -33,11 +37,16 @@
                             <small><a href="/Login/EsqueciSenha" id="ahref">Esqueceu a senha?</a></small>
                         </div>
                         <input type="hidden" id="hdnNovaUrl" name="hdnNovaUrl" value="@ViewBag.ReturnUrl" />
+                        <div class="col-md-12">
                         <center>
-                            <div class="botao">
+                            <div class="botao col-md-6">
                                 <button type="submit" class="btn btn-principal">Entrar</button>
                             </div>
+                            <div class="botao col-md-6">
+                                <button type="button" id="btnCadastrar" name="btnCadastrar" class="btn btn-principal">Cadastrar</button>
+                            </div>
                         </center>
+                        </div>
                     </fieldset>
                 }
             </div>
@@ -52,10 +61,11 @@
         $('#ahref').click(function () {
             var vLogin = $("#txtLogin").val();
             $("#ahref").attr("href", "/Login/EsqueciSenha?vLogin=" + vLogin);
-
-         
         });
 
+        $('#btnCadastrar').click(function () {
+            window.location = "../Usuario/CriarUsuario";
+        });
 
         $("#loginForm").validate({
             onkeyup: false,

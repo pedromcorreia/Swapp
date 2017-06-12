@@ -59,10 +59,6 @@ namespace Bcredi.Web.Controllers
             {
                 mensagemInconsistencia.Append("Cpf não preenchido. ");
             }
-            //else if (!Utils.Utils.isCPFCNPJ(_form["txtCpf"], false))
-            //{
-            //    mensagemInconsistencia.Append("Cpf inválido. ");
-            //}
 
             if (string.IsNullOrEmpty(_form["txtTelefone"]))
             {
@@ -79,10 +75,6 @@ namespace Bcredi.Web.Controllers
                 mensagemInconsistencia.Append("Data de nascimento (Idade mínima 18 anos). ");
             }
 
-            if (string.IsNullOrEmpty(_form["txtCep"]))
-            {
-                mensagemInconsistencia.Append("Cep não preenchido. ");
-            }
             if (string.IsNullOrEmpty(_form["txtEmail"]))
             {
                 mensagemInconsistencia.Append("E-mail não preenchido. ");
@@ -98,8 +90,6 @@ namespace Bcredi.Web.Controllers
                 string txtLogin = _form["txtEmail"];
                 string txtEmail = _form["txtEmail"];
                 string txtPassword = _form["txtPassword"];
-                string txtCep = _form["txtCep"];
-                txtCep = txtCep.Replace("-", "").Replace(".", "");
                 string txtDataNascimento = _form["txtDataNascimento"];
                 string txtTelefone = _form["txtTelefone"];
                 txtTelefone = txtTelefone.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
@@ -109,7 +99,6 @@ namespace Bcredi.Web.Controllers
                 usuario.Nome = txtUsuario;
                 usuario.Login = txtLogin;
                 usuario.Email = txtEmail;
-                usuario.Cep = txtCep.Replace(".", "").Replace("-", "");
 
                 nasc = _form["txtDataNascimento"];
                 if (DateTime.TryParse(nasc, out dataNascimento))
@@ -122,21 +111,11 @@ namespace Bcredi.Web.Controllers
 
                 if ((mensagemInconsistencia.Length == 0))
                 {
-
-                    ////Master pode criar qualquer tipo de usuario
-
-                    //if ((Core.UsuarioAtual.IdPerfil.Equals(1)) || (Core.UsuarioAtual.IdPerfil.Equals(2)))
-                    //{
-                    //Método para criptografar a senha
+                    
                     try
                     {
 
 
-                        usuario.TokenResetSenha = Guid.NewGuid().ToString();
-                        var guidUsuario = Guid.NewGuid().ToString();
-                        usuario.GuidUsuario = guidUsuario;
-
-                        //string newpassword = Bcredi.Utils.Utils.CreatePassword();
                         string newPasswordEncrypted = Bcredi.Utils.Utils.Encryption(txtPassword);
                         usuario.Password = newPasswordEncrypted;
                         idUsuario = usuarioService.saveOrUpdate(usuario);
@@ -148,10 +127,8 @@ namespace Bcredi.Web.Controllers
                         TempData["TempDataPassword"] = txtPassword;
                         TempData["TempDataResetSenha"] = usuario.TokenResetSenha;
 
-                        Bcredi.Utils.Utils.EnviarEmail("ti.financeira@bariguifinanceira.com.br", usuario.Login, "Criar usuário - Bcredi", getBodyEmailCriarUsuario(txtPassword, usuario.TokenResetSenha));
                         ViewBag.MensagemUsuarioCriado = "Usuário criado com sucesso!";
                         retorno = "CadastroRealizado";
-                        ViewBag.Email = txtEmail;
 
 
                         //return RedirectToAction("CadastroRealizado", "Usuario");
@@ -161,15 +138,6 @@ namespace Bcredi.Web.Controllers
                         mensagensErro.Add("Não foi possível criar o usuário, tente novamente. " + ex);
 
                     }
-                    //}
-
-                    ////Se nao for master nao pode criar novos usuarios
-                    //if ((Core.UsuarioAtual.IdPerfil.Equals(3)) || (Core.UsuarioAtual.IdPerfil.Equals(4)))
-                    //{
-                    //    mensagensErro.Add("Desculpe mas seu usuario esta impossibilitado de criar novos usuarios");
-                    //}
-
-                    //return RedirectToAction(retorno, "Usuario");
 
                     return View(retorno);
                 }
