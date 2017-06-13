@@ -13,7 +13,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Layout -->
     
-
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
@@ -40,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="" title="Bcredi"><img src="~/Content/img/logo-barra.png" alt="Bcredi"></a>
+                    <a class="navbar-brand" href="" title="Swapp"><img src="~/Imagens/SwappLogo.PNG" alt="Bcredi" style="max-width:65px; max-height:65px"></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <!-- Menu normal-->
@@ -49,7 +48,14 @@
                     <ul class="nav navbar-nav navbar-right hidden-xs">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <img src="~/Content/img/user-empty.png" class="img-circle mr-7 borda-cinza">@Core.UsuarioAtual.Nome
+                                <img src="~/Content/img/user-empty.png" class="img-circle mr-7 borda-cinza">
+                                @{
+                                    if (Core.UsuarioAtual != null)
+                                    {
+                                        @Core.UsuarioAtual.Nome
+                                    }
+                                }
+                                
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -72,7 +78,9 @@
                 </div>
             </div>
             <div class="container hidden-xs">
-                <ul class="pull-left menu-navegacao">                    
+                <ul class="pull-left menu-navegacao">
+                    <li><a href="/Usuario/AssinaturaDigital" class="campoFocoInicial" id="linkMinhaPropostaCredito" name="linkMinhaPropostaCredito"> Minha proposta de crédito</a></li>
+                    <li><a href="/DadosPessoais/DadosPessoais" id="linkMinhasInformacoes" name="linkMinhasInformacoes"> Minhas informações</a></li>
                 </ul>
                 <ul class="pull-right menu-auxilio">
                     <li><a href="javascript:void($zopim.livechat.window.show())" class="valign-center btnChat tags-ga" data-categoria="header" data-acao="clique"><span>Chat</span> <i class="material-icons"></i></a></li>

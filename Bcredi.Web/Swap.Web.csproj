@@ -206,6 +206,7 @@
     <Compile Include="App_Start\Logger.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\SwapController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\DocumentosController.cs" />
@@ -261,9 +262,10 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="Views\Shared\_Layout_BcrediPropostaFinalizada.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
-    <None Include="Views\Shared\_Layout_Bcredi.cshtml" />
+    <Content Include="Views\Produto\Index.cshtml" />
+    <Content Include="Views\Produto\CriarProduto.cshtml" />
+    <None Include="Views\Shared\_Layout_Swapp.cshtml" />
     <Content Include="Views\Usuario\AssinaturaDigital.cshtml" />
     <Content Include="Views\Usuario\Faq.cshtml" />
     <Content Include="Content\css\login.css" />
@@ -470,7 +472,6 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
