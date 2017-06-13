@@ -6,7 +6,6 @@ namespace Swapp.DAO.Service
 {
     public class ProdutoService
     {
-
         CategoriaRepository categoriaRepository = new CategoriaRepository();
 
         public List<Categoria> GetListaCategorias()

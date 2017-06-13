@@ -21,12 +21,14 @@ namespace Swapp.Web.Controllers
             return View();
         }
 
+
+        [HttpGet]
         public JsonResult GetListaCategorias()
         {
             try
             {
                 List<Categoria> ListaCategoria = produtoService.GetListaCategorias();
-                return Json(new { Success = true, Message = "Usuário não encontrado" }, JsonRequestBehavior.AllowGet);
+                return Json(new { Success = true, ListaCategoria }, JsonRequestBehavior.AllowGet);
             }
             catch
             {
